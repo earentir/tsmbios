@@ -6761,6 +6761,50 @@ begin
       Result := 'PCI-X';
     $13:
       Result := 'AGP 8X';
+    $14:
+      Result := 'M.2 Socket 1-DP (Mechanical Key A';
+    $15:
+      Result := 'M.2 Socket 1-SD (Mechanical Key E)';
+    $16:
+      Result := 'M.2 Socket 2 (Mechanical Key B)';
+    $17:
+      Result := 'M.2 Socket 3 (Mechanical Key M)';
+    $18:
+      Result := 'MXM Type I';
+    $19:
+      Result := 'MXM Type II';
+    $1A:
+      Result := 'MXM Type III (standard connector)';
+    $1B:
+      Result := 'MXM Type III (HE connector)';
+    $1C:
+      Result := 'MXM Type IV';
+    $1D:
+      Result := 'MXM 3.0 Type A';
+    $1E:
+      Result := 'MXM 3.0 Type B';
+    $1F:
+      Result := 'PCI Express Gen 2 SFF-8639 (U.2)';
+    $20:
+      Result := 'PCI Express Gen 3 SFF-8639 (U.2)';
+    $21:
+      Result := 'PCI Express Mini 52-pin (CEM spec. 2.0) with bottom-side keep-outs. Use Slot Length field value 03h (short length) for "half-Mini card"-only support, 04h (long length) for "full-Mini card" or dual support.';
+    $22:
+      Result := 'PCI Express Mini 52-pin (CEM spec. 2.0) without bottom-side keep-outs. Use Slot Length field value 03h (short length) for "half-Mini card"-only support, 04h (long length) for "full-Mini card" or dual support.';
+    $23:
+      Result := 'PCI Express Mini 76-pin (CEM spec. 2.0) Corresponds to Display-Mini card.';
+    $24:
+      Result := 'PCI Express Gen 4 SFF-8639 (U.2)';
+    $25:
+      Result :=  'PCI Express Gen 5 SFF-8639 (U.2)';
+    $26:
+      Result := 'OCP NIC 3.0 Small Form Factor (SFF)';
+    $27:
+      Result := 'OCP NIC 3.0 Large Form Factor (LFF)';
+    $28:
+      Result := 'OCP NIC Prior to 3.0';
+    $30:
+      Result := 'CXL Flexbus 1.0 (deprecated, see note below)';
     $A0:
       Result := 'PC-98/C20';
     $A1:
@@ -6806,7 +6850,40 @@ begin
     $B5:
       Result := 'PCI Express Gen 3 x8';
     $B6:
-      Result := 'PCI Express Gen 3 x16'
+      Result := 'PCI Express Gen 3 x16';
+    $B8:
+      Result := 'PCI Express Gen 4 (see note below)';
+    $B9:
+      Result := 'PCI Express Gen 4 x1';
+    $BA:
+      Result := 'PCI Express Gen 4 x2';
+    $BB:
+      Result  := 'PCI Express Gen 4 x4';
+    $BC:
+      Result := 'PCI Express Gen 4 x8';
+    $BD:
+      Result := 'PCI Express Gen 4 x16';
+    $BE:
+      Result := 'PCI Express Gen 5 (see note below)';
+    $BF:
+      Result := 'PCI Express Gen 5 x1';
+    $C0:
+      Result := 'PCI Express Gen 5 x2';
+    $C1:
+      Result := 'PCI Express Gen 5 x4';
+    $C2:
+      Result  := 'PCI Express Gen 5 x8';
+    $C3:
+      Result := 'PCI Express Gen 5 x16';
+    $C4:
+      Result := 'PCI Express Gen 6 and Beyond';
+    $C5:
+      Result := 'Enterprise and Datacenter 1U E1 Form Factor Slot';
+    $C6:
+      Result := 'Enterprise and Datacenter 3" E3 Form Factor Slot';
+
+    
+
     else
       Result := 'Unknown';
   end;
