@@ -6635,6 +6635,10 @@ begin
       Result := 'SATA';
     $21:
       Result := 'SAS';
+    $22:
+      Result := 'MFDP (Multi-Function Display Port)';
+    $23:
+      Result := 'Thunderbolt';
     $A0:
       Result := '8251 Compatible';
     $A1:
