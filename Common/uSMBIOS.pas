@@ -373,19 +373,19 @@ type
     RAWBiosInformation: ^TBiosInfo;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Get the string representation of the Vendor field
+    /// Get the string representation of theï¿½Vendor field
     /// </summary>
     { $ENDREGION }
     function VendorStr: ansistring;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Get the string representation of the Version field
+    /// Get the string representation of theï¿½Version field
     /// </summary>
     { $ENDREGION }
     function VersionStr: ansistring;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Get the string representation of the ReleaseDate field
+    /// Get the string representation of theï¿½ReleaseDate field
     /// </summary>
     { $ENDREGION }
     function ReleaseDateStr: ansistring;
@@ -504,31 +504,31 @@ type
     function ManufacturerStr: ansistring;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Get the string representation of the ProductName field
+    /// Get the string representation of theï¿½ProductName field
     /// </summary>
     { $ENDREGION }
     function ProductNameStr: ansistring;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Get the string representation of the Version field
+    /// Get the string representation of theï¿½Version field
     /// </summary>
     { $ENDREGION }
     function VersionStr: ansistring;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Get the string representation of the SerialNumber field
+    /// Get the string representation of theï¿½SerialNumber field
     /// </summary>
     { $ENDREGION }
     function SerialNumberStr: ansistring;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Get the string representation of the SKUNumber field
+    /// Get the string representation of theï¿½SKUNumber field
     /// </summary>
     { $ENDREGION }
     function SKUNumberStr: ansistring;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Get the string representation of the Family field
+    /// Get the string representation of theï¿½Family field
     /// </summary>
     { $ENDREGION }
     function FamilyStr: ansistring;
@@ -537,13 +537,13 @@ type
   { $REGION 'Documentation' }
   /// <summary>
   /// the information in this structure defines attributes of a system
-  /// baseboard (for  example, a motherboard, planar, server blade, or other
+  /// baseboard (forï¿½ example, a motherboard, planar, server blade, or other
   /// standard system module). 850 NOTE: If more than one Type 2 structure is
   /// provided by an SMBIOS implementation, each structure shall include the
   /// Number of Contained Object Handles and Contained Object Handles fields
-  /// to specify which system elements are  contained on which boards. If a
+  /// to specify which system elements areï¿½ contained on which boards. If a
   /// single Type 2 structure is provided and the contained object
-  /// information is not  present1, or if no Type 2 structure is provided,
+  /// information is notï¿½ present1, or if no Type 2 structure is provided,
   /// then all system elements identified by the SMBIOS implementation are
   /// associated with a single motherboard.
   /// </summary>
@@ -668,7 +668,7 @@ type
     RAWBaseBoardInformation: ^TBaseBoardInfo;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Get the description of the BoardType field
+    /// Get the description of theï¿½BoardType field
     /// </summary>
     { $ENDREGION }
     function BoardTypeStr: ansistring;
@@ -680,31 +680,31 @@ type
     function ManufacturerStr: ansistring;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Get the string representation of the Product field
+    /// Get the string representation of theï¿½Product field
     /// </summary>
     { $ENDREGION }
     function ProductStr: ansistring;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Get the string representation of the Version field
+    /// Get the string representation of theï¿½Version field
     /// </summary>
     { $ENDREGION }
     function VersionStr: ansistring;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Get the string representation of the SerialNumber field
+    /// Get the string representation of theï¿½SerialNumber field
     /// </summary>
     { $ENDREGION }
     function SerialNumberStr: ansistring;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Get the string representation of the AssetTag field
+    /// Get the string representation of theï¿½AssetTag field
     /// </summary>
     { $ENDREGION }
     function AssetTagStr: ansistring;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Get the string representation of the LocationinChassis field
+    /// Get the string representation of theï¿½LocationinChassis field
     /// </summary>
     { $ENDREGION }
     function LocationinChassisStr: ansistring;
@@ -876,37 +876,37 @@ type
     function ManufacturerStr: ansistring;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Get the string representation of the Version field
+    /// Get the string representation of theï¿½Version field
     /// </summary>
     { $ENDREGION }
     function VersionStr: ansistring;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Get the string representation of the SerialNumber field
+    /// Get the string representation of theï¿½SerialNumber field
     /// </summary>
     { $ENDREGION }
     function SerialNumberStr: ansistring;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Get the string representation of the AssetTagNumber field
+    /// Get the string representation of theï¿½AssetTagNumber field
     /// </summary>
     { $ENDREGION }
     function AssetTagNumberStr: ansistring;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Get the description of the Type field
+    /// Get the description of theï¿½Type field
     /// </summary>
     { $ENDREGION }
     function TypeStr: ansistring;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Get the description of the BootUpState field
+    /// Get the description of theï¿½BootUpState field
     /// </summary>
     { $ENDREGION }
     function BootUpStateStr: ansistring;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Get the description of the PowerSupplyState field
+    /// Get the description of theï¿½PowerSupplyState field
     /// </summary>
     { $ENDREGION }
     function PowerSupplyStateStr: ansistring;
@@ -915,7 +915,7 @@ type
   { $REGION 'Documentation' }
   /// <summary>
   /// The information in this structure defines the attributes of the
-  /// system’s memory controller(s) and the supported attributes of any
+  /// systemï¿½s memory controller(s) and the supported attributes of any
   /// memory-modules present in the sockets controlled by this controller.
   /// </summary>
   { $ENDREGION }
@@ -1002,13 +1002,13 @@ type
     /// Bits 7:3 Reserved, must be zero
     /// </para>
     /// <para>
-    /// Bit 2     2.9V
+    /// Bit 2ï¿½ï¿½ï¿½ï¿½ 2.9V
     /// </para>
     /// <para>
-    /// Bit 1     3.3V
+    /// Bit 1ï¿½ï¿½ï¿½ï¿½ 3.3V
     /// </para>
     /// <para>
-    /// Bit 0     5V
+    /// Bit 0ï¿½ï¿½ï¿½ï¿½ 5V
     /// </para>
     /// <para>
     /// NOTE: Setting of multiple bits indicates that the sockets are
@@ -1081,9 +1081,9 @@ type
   { $REGION 'Documentation' }
   /// <summary>
   /// One Memory Module Information structure is included for each
-  /// memory-module socket in the system. The structure describes the speed,
+  /// memory-module socket in the system.ï¿½The structure describes the speed,
   /// type, size, and error status of each system memory module. The
-  /// supported attributes of each module are described by the “owning”
+  /// supported attributes of each module are described by the ï¿½owningï¿½
   /// Memory Controller Information structure.
   /// </summary>
   { $ENDREGION }
@@ -1092,7 +1092,7 @@ type
 
     { $REGION 'Documentation' }
     /// <summary>
-    /// String number for reference designation EXAMPLE: ‘J202’,0
+    /// String number for reference designation EXAMPLE: ï¿½J202ï¿½,0
     /// </summary>
     /// <remarks>
     /// 2.0+
@@ -1144,7 +1144,7 @@ type
     /// <summary>
     /// The Installed Size fields identify the size of the memory module that
     /// is installed in the socket, as determined by reading and correlating
-    /// the module’s presence-detect information. If the system does not
+    /// the moduleï¿½s presence-detect information. If the system does not
     /// support presence-detect mechanisms, the Installed Size field is set
     /// to 7Dh to indicate that the installed size is not determinable.
     /// </summary>
@@ -1157,7 +1157,7 @@ type
     { $REGION 'Documentation' }
     /// <summary>
     /// The Enabled Size field identifies the amount of memory currently
-    /// enabled for the system’s use from the module. If a module is known to
+    /// enabled for the systemï¿½s use from the module. If a module is known to
     /// be installed in a connector, but all memory in the module has been
     /// disabled due to error, the Enabled Size field is set to 7Eh.
     /// </summary>
@@ -1735,7 +1735,7 @@ type
     { $REGION 'Documentation' }
     /// <summary>
     /// <para>
-    /// Number of enabled cores per processor socket. If the value is
+    /// Number of enabled cores per processor socket.ï¿½If the value is
     /// unknown, the field is set 0.
     /// </para>
     /// <para>
@@ -1972,7 +1972,7 @@ type
   { $REGION 'Documentation' }
   /// <summary>
   /// the information in this structure defines the attributes of a system
-  /// slot. One structure is provided for each slot in the system.
+  /// slot. Oneï¿½structure is provided for each slot in the system.
   /// </summary>
   { $ENDREGION }
   TSystemSlotInfo = packed record
@@ -2008,7 +2008,7 @@ type
     { $REGION 'Documentation' }
     /// <summary>
     /// The Slot ID field of the System Slot structure provides a mechanism
-    /// to correlate the physical attributes of  the slot to its logical
+    /// to correlate the physical attributes ofï¿½ the slot to its logical
     /// access method (which varies based on the Slot Type field).
     /// </summary>
     /// <remarks>
@@ -2138,8 +2138,8 @@ type
 
   { $REGION 'Documentation' }
   /// <summary>
-  /// This structure contains free-form strings defined by the OEM.  Examples
-  /// of this are part numbers for system reference documents, contact
+  /// This structure contains free-form strings defined by the OEM.ï¿½ Examples
+  /// of this areï¿½part numbers for system reference documents, contact
   /// information for the manufacturer, etc.
   /// </summary>
   { $ENDREGION }
@@ -2209,7 +2209,7 @@ type
     RAWOEMStringsInformation: ^TOEMStringsInfo;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Returns the OEM String based in the Index
+    /// Returns the OEM String based inï¿½the Index
     /// </summary>
     { $ENDREGION }
     function GetOEMString(index: integer): ansistring;
@@ -2218,7 +2218,7 @@ type
   { $REGION 'Documentation' }
   /// <summary>
   /// This structure contains information required to configure the
-  /// baseboards Jumpers and Switches.
+  /// baseboards Jumpersï¿½and Switches.
   /// </summary>
   { $ENDREGION }
   TSystemConfInfo = packed record
@@ -2236,7 +2236,7 @@ type
     RAWSystemConfInformation: ^TSystemConfInfo;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Returns the configuration String based in the Index
+    /// Returns the configuration String based inï¿½the Index
     /// </summary>
     { $ENDREGION }
     function GetConfString(index: integer): ansistring;
@@ -2245,7 +2245,7 @@ type
   { $REGION 'Documentation' }
   /// <summary>
   /// The information in this structure defines the installable language
-  /// attributes of the BIOS.
+  /// attributes of theï¿½BIOS.
   /// </summary>
   { $ENDREGION }
   TBIOSLanguageInfo = packed record
@@ -2301,7 +2301,7 @@ type
     RAWBIOSLanguageInformation: ^TBIOSLanguageInfo;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Returns the Installed language string based in the Index
+    /// Returns the Installed language string based inï¿½the Index
     /// </summary>
     { $ENDREGION }
     function GetLanguageString(index: integer): ansistring;
@@ -2316,7 +2316,7 @@ type
   { $REGION 'Documentation' }
   /// <summary>
   /// This structure describes a collection of memory devices that operate
-  /// together to form a memory address space.
+  /// together to form a memory addressï¿½space.
   /// </summary>
   { $ENDREGION }
   TPhysicalMemoryArrayInfo = packed record
@@ -2413,7 +2413,7 @@ type
     function GetLocationStr: ansistring;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Get the description of the Use  field.
+    /// Get the description of theï¿½Use ï¿½field.
     /// </summary>
     { $ENDREGION }
     function GetUseStr: ansistring;
@@ -3303,7 +3303,7 @@ type
   { $REGION 'Documentation' }
   /// <summary>
   /// This describes the attributes for a voltage probe in the system. Each
-  /// structure describes a single voltage probe.
+  /// structure describes a single voltageï¿½probe.
   /// </summary>
   /// <remarks>
   /// NOTE: This structure type was added in version 2.2 of the SMBIOS
@@ -3430,7 +3430,7 @@ type
   { $REGION 'Documentation' }
   /// <summary>
   /// This structure describes the attributes for a cooling device in the
-  /// system. Each structure describes a single cooling device.
+  /// system. Each structure describes aï¿½single cooling device.
   /// </summary>
   { $ENDREGION }
   TCoolingDeviceInfo = packed record
@@ -3654,7 +3654,7 @@ type
   { $REGION 'Documentation' }
   /// <summary>
   /// This structure describes the attributes for an electrical current probe
-  /// in the system. Each structure describes a single electrical current
+  /// in the system. Each structureï¿½describes a single electrical current
   /// probe.
   /// </summary>
   { $ENDREGION }
@@ -3909,7 +3909,7 @@ type
   public
     { $REGION 'Documentation' }
     /// <summary>
-    /// Default constructor, used for populate the TSMBIOS class  using the
+    /// Default constructor, used for populate the TSMBIOS classï¿½ using the
     /// current mode selected (WMI or WinApi)
     /// </summary>
     { $ENDREGION }
@@ -3938,20 +3938,20 @@ type
     function GetSMBiosString(Entry, index: integer): ansistring;
     { $REGION 'Documentation' }
     /// <summary>
-    /// Save(Dump) the TRawSMBIOSData structure to a file
+    /// Save(Dump)ï¿½the TRawSMBIOSData structure to a file
     /// </summary>
     { $ENDREGION }
     procedure SaveToFile(const FileName: string);
     { $REGION 'Documentation' }
     /// <summary>
-    /// Load the TRawSMBIOSData structure from a file
+    /// Loadï¿½the TRawSMBIOSData structure from a file
     /// </summary>
     { $ENDREGION }
     procedure LoadFromFile(const FileName: string; LoadSMBIOSTables: boolean = False);
 
     { $REGION 'Documentation' }
     /// <summary>
-    /// Find and load the SMBIOS Data from a file
+    /// Find and loadï¿½the SMBIOS Data from a file
     /// </summary>
     { $ENDREGION }
     procedure FindAndLoadFromFile(const FileName: string);
@@ -5706,27 +5706,27 @@ begin
       10:
         Result := '80487';
       11:
-        Result := 'Intel® Pentium® processor';
+        Result := 'Intelï¿½ Pentiumï¿½ processor';
       12:
-        Result := 'Pentium® Pro processor';
+        Result := 'Pentiumï¿½ Pro processor';
       13:
-        Result := 'Pentium® II processor';
+        Result := 'Pentiumï¿½ II processor';
       14:
-        Result := 'Pentium® processor with MMX technology';
+        Result := 'Pentiumï¿½ processor with MMX technology';
       15:
-        Result := 'Intel® Celeron® processor';
+        Result := 'Intelï¿½ Celeronï¿½ processor';
       16:
-        Result := 'Pentium® II Xeon processor';
+        Result := 'Pentiumï¿½ II Xeon processor';
       17:
-        Result := 'Pentium® III processor';
+        Result := 'Pentiumï¿½ III processor';
       18:
         Result := 'M1 Family';
       19:
         Result := 'M2 Family';
       20:
-        Result := 'Intel® Celeron® M processor';
+        Result := 'Intelï¿½ Celeronï¿½ M processor';
       21:
-        Result := 'Intel® Pentium® 4 HT processor';
+        Result := 'Intelï¿½ Pentiumï¿½ 4 HT processor';
       22 .. 23:
         Result := 'Available for assignment';
       24:
@@ -5762,13 +5762,13 @@ begin
       39:
         Result := 'Power PC 750';
       40:
-        Result := 'Intel® Core Duo processor';
+        Result := 'Intelï¿½ Core Duo processor';
       41:
-        Result := 'Intel® Core Duo mobile processor';
+        Result := 'Intelï¿½ Core Duo mobile processor';
       42:
-        Result := 'Intel® Core Solo mobile processor';
+        Result := 'Intelï¿½ Core Solo mobile processor';
       43:
-        Result := 'Intel® Atom processor';
+        Result := 'Intelï¿½ Atom processor';
       44 .. 47:
         Result := 'Available for assignment';
       48:
@@ -5922,83 +5922,83 @@ begin
       160:
         Result := 'V30 Family';
       161:
-        Result := 'Quad-Core Intel® Xeon® processor 3200 Series';
+        Result := 'Quad-Core Intelï¿½ Xeonï¿½ processor 3200 Series';
       162:
-        Result := 'Dual-Core Intel® Xeon® processor 3000 Series';
+        Result := 'Dual-Core Intelï¿½ Xeonï¿½ processor 3000 Series';
       163:
-        Result := 'Quad-Core Intel® Xeon® processor 5300 Series';
+        Result := 'Quad-Core Intelï¿½ Xeonï¿½ processor 5300 Series';
       164:
-        Result := 'Dual-Core Intel® Xeon® processor 5100 Series';
+        Result := 'Dual-Core Intelï¿½ Xeonï¿½ processor 5100 Series';
       165:
-        Result := 'Dual-Core Intel® Xeon® processor 5000 Series';
+        Result := 'Dual-Core Intelï¿½ Xeonï¿½ processor 5000 Series';
       166:
-        Result := 'Dual-Core Intel® Xeon® processor LV';
+        Result := 'Dual-Core Intelï¿½ Xeonï¿½ processor LV';
       167:
-        Result := 'Dual-Core Intel® Xeon® processor ULV';
+        Result := 'Dual-Core Intelï¿½ Xeonï¿½ processor ULV';
       168:
-        Result := 'Dual-Core Intel® Xeon® processor';
+        Result := 'Dual-Core Intelï¿½ Xeonï¿½ processor';
       169:
-        Result := 'Quad-Core Intel® Xeon® processor';
+        Result := 'Quad-Core Intelï¿½ Xeonï¿½ processor';
       170:
-        Result := 'Quad-Core Intel® Xeon® processor';
+        Result := 'Quad-Core Intelï¿½ Xeonï¿½ processor';
       171:
-        Result := 'Dual-Core Intel® Xeon® processor';
+        Result := 'Dual-Core Intelï¿½ Xeonï¿½ processor';
       172:
-        Result := 'Dual-Core Intel® Xeon® processor';
+        Result := 'Dual-Core Intelï¿½ Xeonï¿½ processor';
       173:
-        Result := 'Quad-Core Intel® Xeon® processor';
+        Result := 'Quad-Core Intelï¿½ Xeonï¿½ processor';
       174:
-        Result := 'Quad-Core Intel® Xeon® processor';
+        Result := 'Quad-Core Intelï¿½ Xeonï¿½ processor';
       175:
-        Result := 'Multi-Core Intel® Xeon® processor';
+        Result := 'Multi-Core Intelï¿½ Xeonï¿½ processor';
       176:
-        Result := 'Pentium® III Xeon processor';
+        Result := 'Pentiumï¿½ III Xeon processor';
       177:
-        Result := 'Pentium® III Processor with Intel';
+        Result := 'Pentiumï¿½ III Processor with Intel';
       178:
-        Result := 'Pentium® 4 Processor';
+        Result := 'Pentiumï¿½ 4 Processor';
       179:
-        Result := 'Intel® Xeon® processor';
+        Result := 'Intelï¿½ Xeonï¿½ processor';
       180:
         Result := 'AS400 Family';
       181:
-        Result := 'Intel® Xeon processor MP';
+        Result := 'Intelï¿½ Xeon processor MP';
       182:
         Result := 'AMD Athlon XP Processor Family';
       183:
         Result := 'AMD Athlon MP Processor Family';
       184:
-        Result := 'Intel® Itanium® 2 processor';
+        Result := 'Intelï¿½ Itaniumï¿½ 2 processor';
       185:
-        Result := 'Intel® Pentium® M processor';
+        Result := 'Intelï¿½ Pentiumï¿½ M processor';
       186:
-        Result := 'Intel® Celeron® D processor';
+        Result := 'Intelï¿½ Celeronï¿½ D processor';
       187:
-        Result := 'Intel® Pentium® D processor';
+        Result := 'Intelï¿½ Pentiumï¿½ D processor';
       188:
-        Result := 'Intel® Pentium® Processor Extreme';
+        Result := 'Intelï¿½ Pentiumï¿½ Processor Extreme';
       189:
-        Result := 'Intel® Core Solo Processor';
+        Result := 'Intelï¿½ Core Solo Processor';
       190:
         Result := 'Reserved';
       191:
-        Result := 'Intel® Core 2 Duo Processor';
+        Result := 'Intelï¿½ Core 2 Duo Processor';
       192:
-        Result := 'Intel® Core 2 Solo processor';
+        Result := 'Intelï¿½ Core 2 Solo processor';
       193:
-        Result := 'Intel® Core 2 Extreme processor';
+        Result := 'Intelï¿½ Core 2 Extreme processor';
       194:
-        Result := 'Intel® Core 2 Quad processor';
+        Result := 'Intelï¿½ Core 2 Quad processor';
       195:
-        Result := 'Intel® Core 2 Extreme mobile';
+        Result := 'Intelï¿½ Core 2 Extreme mobile';
       196:
-        Result := 'Intel® Core 2 Duo mobile processor';
+        Result := 'Intelï¿½ Core 2 Duo mobile processor';
       197:
-        Result := 'Intel® Core 2 Solo mobile processor';
+        Result := 'Intelï¿½ Core 2 Solo mobile processor';
       198:
-        Result := 'Intel® Core i7 processor';
+        Result := 'Intelï¿½ Core i7 processor';
       199:
-        Result := 'Dual-Core Intel® Celeron® processor';
+        Result := 'Dual-Core Intelï¿½ Celeronï¿½ processor';
       200:
         Result := 'IBM390 Family';
       201:
@@ -6010,9 +6010,9 @@ begin
       204:
         Result := 'z/Architectur base';
       205:
-        Result := 'Intel® Core i5 processor';
+        Result := 'Intelï¿½ Core i5 processor';
       206:
-        Result := 'Intel® Core i3 processor';
+        Result := 'Intelï¿½ Core i3 processor';
       207 .. 209:
         Result := 'Available for assignment';
       210:
@@ -6024,27 +6024,27 @@ begin
       213:
         Result := 'VIA Eden Processor Family';
       214:
-        Result := 'Multi-Core Intel® Xeon® processor';
+        Result := 'Multi-Core Intelï¿½ Xeonï¿½ processor';
       215:
-        Result := 'Dual-Core Intel® Xeon® processor 3xxx Series';
+        Result := 'Dual-Core Intelï¿½ Xeonï¿½ processor 3xxx Series';
       216:
-        Result := 'Quad-Core Intel® Xeon® processor 3xxx Series';
+        Result := 'Quad-Core Intelï¿½ Xeonï¿½ processor 3xxx Series';
       217:
         Result := 'VIA Nano Processor Family';
       218:
-        Result := 'Dual-Core Intel® Xeon® processor 5xxx Series';
+        Result := 'Dual-Core Intelï¿½ Xeonï¿½ processor 5xxx Series';
       219:
-        Result := 'Quad-Core Intel® Xeon® processor 5xxx Series';
+        Result := 'Quad-Core Intelï¿½ Xeonï¿½ processor 5xxx Series';
       220:
         Result := 'Available for assignment';
       221:
-        Result := 'Dual-Core Intel® Xeon® processor 7xxx Series';
+        Result := 'Dual-Core Intelï¿½ Xeonï¿½ processor 7xxx Series';
       222:
-        Result := 'Quad-Core Intel® Xeon® processor 7xxx Series';
+        Result := 'Quad-Core Intelï¿½ Xeonï¿½ processor 7xxx Series';
       223:
-        Result := 'Multi-Core Intel® Xeon® processor 7xxx Series';
+        Result := 'Multi-Core Intelï¿½ Xeonï¿½ processor 7xxx Series';
       224:
-        Result := 'Multi-Core Intel® Xeon® processor 3400 Series';
+        Result := 'Multi-Core Intelï¿½ Xeonï¿½ processor 3400 Series';
       225 .. 229:
         Result := 'Available for assignment';
       230:
@@ -6123,37 +6123,37 @@ begin
       600:
         Result := 'LoongArch';
       601:
-        Result := 'Loongson™ 1 Processor Family';
+        Result := 'Loongsonï¿½ 1 Processor Family';
       602:
-        Result := 'Loongson™ 2 Processor Family';
+        Result := 'Loongsonï¿½ 2 Processor Family';
       603:
-        Result := 'Loongson™ 3 Processor Family';
+        Result := 'Loongsonï¿½ 3 Processor Family';
       604:
-        Result := 'Loongson™ 2K Processor Family';
+        Result := 'Loongsonï¿½ 2K Processor Family';
       605:
-        Result := 'Loongson™ 3A Processor Family';
+        Result := 'Loongsonï¿½ 3A Processor Family';
       606:
-        Result := 'Loongson™ 3B Processor Family';
+        Result := 'Loongsonï¿½ 3B Processor Family';
       607:
-        Result := 'Loongson™ 3C Processor Family';
+        Result := 'Loongsonï¿½ 3C Processor Family';
       608:
-        Result := 'Loongson™ 3D Processor Family';
+        Result := 'Loongsonï¿½ 3D Processor Family';
       609:
-        Result := 'Loongson™ 3E Processor Family';
+        Result := 'Loongsonï¿½ 3E Processor Family';
       610:
-        Result := 'Dual-Core Loongson™ 2K Processor 2xxx Series';
+        Result := 'Dual-Core Loongsonï¿½ 2K Processor 2xxx Series';
       620:
-        Result := 'Quad-Core Loongson™ 3A Processor 5xxx Series';
+        Result := 'Quad-Core Loongsonï¿½ 3A Processor 5xxx Series';
       621:
-        Result := 'Multi-Core Loongson™ 3A Processor 5xxx Series';
+        Result := 'Multi-Core Loongsonï¿½ 3A Processor 5xxx Series';
       622:
-        Result := 'Quad-Core Loongson™ 3B Processor 5xxx Series';
+        Result := 'Quad-Core Loongsonï¿½ 3B Processor 5xxx Series';
       623:
-        Result := 'Multi-Core Loongson™ 3B Processor 5xxx Series';
+        Result := 'Multi-Core Loongsonï¿½ 3B Processor 5xxx Series';
       624:
-        Result := 'Multi-Core Loongson™ 3C Processor 5xxx Series';
+        Result := 'Multi-Core Loongsonï¿½ 3C Processor 5xxx Series';
       625:
-        Result := 'Multi-Core Loongson™ 3D Processor 5xxx Series';
+        Result := 'Multi-Core Loongsonï¿½ 3D Processor 5xxx Series';
       768 .. 65533:
         Result := 'Available for assignment';
       65534 .. 65535:
@@ -6539,6 +6539,8 @@ begin
       Result := '1394';
     $22:
       Result := 'SAS/SATA Plug Receptacle';
+    $23:
+      Result := 'USB Type-C Receptable';
     $A0:
       Result := 'PC-98';
     $A1:
