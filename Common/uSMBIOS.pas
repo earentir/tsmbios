@@ -7576,6 +7576,8 @@ begin
     Result := 'Front Panel Board'
   else if BitStr = '01101' then
     Result := 'Back Panel Board'
+  else if BitStr = '01110' then
+    Result := 'Power System Board'  
   else if BitStr = '01111' then
     Result := 'Drive Back Plane';
 end;
