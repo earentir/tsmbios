@@ -7170,7 +7170,9 @@ begin
     $0E:
       Result := 'SRIMM';
     $0F:
-      Result := 'FB-DIMM'
+      Result := 'FB-DIMM';
+    $10:
+      Result := 'Die'
     else
       Result := 'Unknown';
   end;
