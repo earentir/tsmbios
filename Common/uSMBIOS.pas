@@ -7084,8 +7084,16 @@ begin
       Result := 'Proprietary add-on card';
     $0A:
       Result := 'NuBus'
-    else
-      Result := 'Unknown';
+    $A0:
+      Result := 'PC-98/C20 add-on card';
+    $A1:
+      Result := 'PC-98/C24 add-on card';
+    $A2:
+      Result := 'PC-98/E add-on card';
+    $A3:
+      Result := 'PC-98/Local bus add-on card';
+    $A4:
+      Result := 'CXL Flexbus 1.0'
     else
       Result := 'Unknown';
   end;
