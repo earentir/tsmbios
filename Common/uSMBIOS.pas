@@ -7074,6 +7074,18 @@ begin
       Result := 'ISA add-on card';
     $05:
       Result := 'EISA add-on card'
+    $06:
+      Result := 'PCI add-on card';
+    $07:
+      Result := 'MCA add-on card';
+    $08:
+      Result := 'PCMCIA add-on card';
+    $09:
+      Result := 'Proprietary add-on card';
+    $0A:
+      Result := 'NuBus'
+    else
+      Result := 'Unknown';
     else
       Result := 'Unknown';
   end;
