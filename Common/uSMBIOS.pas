@@ -7383,6 +7383,11 @@ begin
       Result := 'Bus mouse micro-DIN';
     $A2:
       Result := 'USB'
+    $A3:
+      Result := 'I2C';
+    $A4:
+      Result := 'SPI';
+
     else
       Result := 'Unknown';
   end;
