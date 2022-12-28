@@ -18,6 +18,7 @@
 // All Rights Reserved.
 //
 // **************************************************************************************************
+
 unit uSMBIOS;
 
 interface
@@ -46,42 +47,38 @@ interface
     {$DEFINE MSWINDOWS}
   {$ELSE}
     {$IF CompilerVersion < 16}
-     {$DEFINE OLDDELPHI}
+{$DEFINE OLDDELPHI}
     {$IFEND}
   {$ENDIF}
 {$ENDIF}
 
 uses
   SysUtils,
- {$IFDEF MSWINDOWS}
+{$IFDEF MSWINDOWS}
   Windows,
- {$ENDIF}
- {$IFNDEF NOGENERICS}
- Generics.Collections,
- {$ENDIF}
- {$IFDEF UNIX}
+{$ENDIF}
+{$IFNDEF NOGENERICS}
+Generics.Collections,
+{$ENDIF}
+{$IFDEF UNIX}
   {$IFDEF FPC}
-    BaseUnix,
+BaseUnix,
   {$ELSE}
   Posix.Unistd,
   {$ENDIF}
- {$ENDIF}
- {$IFDEF MACOS}
-  System.Types,
- {$ENDIF MACOS}
+{$ENDIF}
+{$IFDEF MACOS}
+System.Types,
+{$ENDIF MACOS}
   Classes;
 
 {$DEFINE USEWMI}
-
 type
   // TODO :
   // Add OSX support
-  // Add old Delphi versions support
-
 {$IFDEF VER130}
   DWORD = Cardinal;
 {$ENDIF}
-
 {$IFDEF LINUX}
   DWORD = FixedUInt;
   AnsiString = String;
@@ -101,114 +98,68 @@ type
   // http://www.dmtf.org/standards/smbios
 
   TSMBiosTablesTypes = (
-    BIOSInformation,
-    SystemInformation,
-    BaseBoardInformation,
-    EnclosureInformation,
-    ProcessorInformation,
-    MemoryControllerInformation,
+    BIOSInformation, SystemInformation, BaseBoardInformation, EnclosureInformation, ProcessorInformation, MemoryControllerInformation,
     // Obsolete starting with version 2.1
-    MemoryModuleInformation, // Obsolete starting with version 2.1
-    CacheInformation,
-    PortConnectorInformation,
-    SystemSlotsInformation,
-    OnBoardDevicesInformation, // This structure is obsolete starting with version 2.6
-    OEMStrings,
-    SystemConfigurationOptions,
-    BIOSLanguageInformation,
-    GroupAssociations,
-    SystemEventLog, PhysicalMemoryArray, MemoryDevice,
+    MemoryModuleInformation,
+    // Obsolete starting with version 2.1
+    CacheInformation, PortConnectorInformation, SystemSlotsInformation, OnBoardDevicesInformation,
+    // This structure is obsolete starting with version 2.6
+    OEMStrings, SystemConfigurationOptions, BIOSLanguageInformation, GroupAssociations, SystemEventLog, PhysicalMemoryArray, MemoryDevice,
     MemoryErrorInformation, MemoryArrayMappedAddress, MemoryDeviceMappedAddress, BuiltinPointingDevice,
-    PortableBattery, SystemReset, HardwareSecurity,
-    SystemPowerControls,
-    VoltageProbe, CoolingDevice, TemperatureProbe, ElectricalCurrentProbe, OutofBandRemoteAccess, BootIntegrityServicesEntryPoint,
-    SystemBootInformation, x64BitMemoryErrorInformation, ManagementDevice, ManagementDeviceComponent,
-    ManagementDeviceThresholdData, MemoryChannel,
-    IPMIDeviceInformation, SystemPowerSupply, AdditionalInformation, OnboardDevicesExtendedInformation,
-    ManagementControllerHostInterface, SMBIOSTable43,
-    SMBIOSTable44, SMBIOSTable45, SMBIOSTable46, SMBIOSTable47, SMBIOSTable48, SMBIOSTable49, SMBIOSTable50,
-    SMBIOSTable51, SMBIOSTable52, SMBIOSTable53,
-    SMBIOSTable54, SMBIOSTable55, SMBIOSTable56, SMBIOSTable57, SMBIOSTable58, SMBIOSTable59, SMBIOSTable60,
-    SMBIOSTable61, SMBIOSTable62, SMBIOSTable63,
-    SMBIOSTable64, SMBIOSTable65, SMBIOSTable66, SMBIOSTable67, SMBIOSTable68, SMBIOSTable69, SMBIOSTable70,
-    SMBIOSTable71, SMBIOSTable72, SMBIOSTable73,
-    SMBIOSTable74, SMBIOSTable75, SMBIOSTable76, SMBIOSTable77, SMBIOSTable78, SMBIOSTable79, SMBIOSTable80,
-    SMBIOSTable81, SMBIOSTable82, SMBIOSTable83,
-    SMBIOSTable84, SMBIOSTable85, SMBIOSTable86, SMBIOSTable87, SMBIOSTable88, SMBIOSTable89, SMBIOSTable90,
-    SMBIOSTable91, SMBIOSTable92, SMBIOSTable93,
-    SMBIOSTable94, SMBIOSTable95, SMBIOSTable96, SMBIOSTable97, SMBIOSTable98, SMBIOSTable99, SMBIOSTable100,
-    SMBIOSTable101, SMBIOSTable102, SMBIOSTable103,
-    SMBIOSTable104, SMBIOSTable105, SMBIOSTable106, SMBIOSTable107, SMBIOSTable108, SMBIOSTable109,
-    SMBIOSTable110, SMBIOSTable111, SMBIOSTable112,
-    SMBIOSTable113, SMBIOSTable114, SMBIOSTable115, SMBIOSTable116, SMBIOSTable117, SMBIOSTable118,
-    SMBIOSTable119, SMBIOSTable120, SMBIOSTable121,
+    PortableBattery, SystemReset, HardwareSecurity, SystemPowerControls, VoltageProbe, CoolingDevice, TemperatureProbe,
+    ElectricalCurrentProbe, OutofBandRemoteAccess, BootIntegrityServicesEntryPoint, SystemBootInformation, x64BitMemoryErrorInformation,
+    ManagementDevice, ManagementDeviceComponent, ManagementDeviceThresholdData, MemoryChannel, IPMIDeviceInformation, SystemPowerSupply,
+    AdditionalInformation, OnboardDevicesExtendedInformation, ManagementControllerHostInterface, SMBIOSTable43,
+    SMBIOSTable44, SMBIOSTable45, SMBIOSTable46, SMBIOSTable47, SMBIOSTable48, SMBIOSTable49, SMBIOSTable50, SMBIOSTable51, SMBIOSTable52,
+    SMBIOSTable53, SMBIOSTable54, SMBIOSTable55, SMBIOSTable56, SMBIOSTable57, SMBIOSTable58, SMBIOSTable59, SMBIOSTable60, SMBIOSTable61,
+    SMBIOSTable62, SMBIOSTable63, SMBIOSTable64, SMBIOSTable65, SMBIOSTable66, SMBIOSTable67, SMBIOSTable68, SMBIOSTable69, SMBIOSTable70,
+    SMBIOSTable71, SMBIOSTable72, SMBIOSTable73, SMBIOSTable74, SMBIOSTable75, SMBIOSTable76, SMBIOSTable77, SMBIOSTable78, SMBIOSTable79,
+    SMBIOSTable80, SMBIOSTable81, SMBIOSTable82, SMBIOSTable83, SMBIOSTable84, SMBIOSTable85, SMBIOSTable86, SMBIOSTable87, SMBIOSTable88,
+    SMBIOSTable89, SMBIOSTable90, SMBIOSTable91, SMBIOSTable92, SMBIOSTable93, SMBIOSTable94, SMBIOSTable95, SMBIOSTable96, SMBIOSTable97,
+    SMBIOSTable98, SMBIOSTable99, SMBIOSTable100, SMBIOSTable101, SMBIOSTable102, SMBIOSTable103, SMBIOSTable104, SMBIOSTable105,
+    SMBIOSTable106, SMBIOSTable107, SMBIOSTable108, SMBIOSTable109, SMBIOSTable110, SMBIOSTable111, SMBIOSTable112, SMBIOSTable113,
+    SMBIOSTable114, SMBIOSTable115, SMBIOSTable116, SMBIOSTable117, SMBIOSTable118, SMBIOSTable119, SMBIOSTable120, SMBIOSTable121,
     SMBIOSTable122, SMBIOSTable123, SMBIOSTable124, SMBIOSTable125, Inactive, // 126
     EndofTable);
 
 const
   SMBiosTablesDescr: array [byte] of ansistring =
-    ('BIOS Information', 'System Information', 'BaseBoard Information', 'Enclosure Information',
-    'Processor Information', 'Memory Controller Information', 'Memory Module Information', 'Cache Information',
-    'Port Connector Information',
-    'System Slots Information', 'OnBoard Devices Information', 'OEM Strings', 'System Configuration Options',
-    'BIOS Language Information', 'Group Associations',
-    'System Event Log', 'Physical Memory Array', 'Memory Device', 'Memory Error Information',
-    'Memory Array Mapped Address', 'Memory Device Mapped Address',
-    'Builtin Pointing Device', 'Portable Battery', 'System Reset', 'Hardware Security', 'System Power Controls',
-    'Voltage Probe', 'Cooling Device',
-    'Temperature Probe', 'Electrical Current Probe', 'Out-of-Band Remote Access', 'Boot Integrity Services (BIS) Entry Point',
-    'System Boot Information',
-    '64-Bit Memory Error Information', 'Management Device', 'Management Device Component', 'Management Device Threshold Data',
-    'Memory Channel',
-    'IPMI Device Information', 'System Power Supply', 'Additional Information', 'Onboard Devices Extended Information',
-    'Management Controller Host Interface',
+    ('BIOS Information', 'System Information', 'BaseBoard Information', 'Enclosure Information', 'Processor Information',
+    'Memory Controller Information', 'Memory Module Information', 'Cache Information', 'Port Connector Information',
+    'System Slots Information', 'OnBoard Devices Information', 'OEM Strings', 'System Configuration Options', 'BIOS Language Information',
+    'Group Associations', 'System Event Log', 'Physical Memory Array', 'Memory Device', 'Memory Error Information',
+    'Memory Array Mapped Address', 'Memory Device Mapped Address', 'Builtin Pointing Device', 'Portable Battery', 'System Reset',
+    'Hardware Security', 'System Power Controls', 'Voltage Probe', 'Cooling Device', 'Temperature Probe', 'Electrical Current Probe',
+    'Out-of-Band Remote Access', 'Boot Integrity Services (BIS) Entry Point', 'System Boot Information', '64-Bit Memory Error Information',
+    'Management Device', 'Management Device Component', 'Management Device Threshold Data', 'Memory Channel', 'IPMI Device Information',
+    'System Power Supply', 'Additional Information', 'Onboard Devices Extended Information', 'Management Controller Host Interface',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Inactive', 'End of Table', // 127
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
+    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
     'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Inactive', 'End of Table', // 127
-    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported', 'Not Supported',
-    'Not Supported', 'Not Supported', 'Not Supported',
     'Not Supported', 'Not Supported');
 
 type
@@ -1203,11 +1154,13 @@ type
     function GetSocketDesignationDescr: ansistring;
   end;
 
-  TCacheSRAMType = (SROther, SRUnknown, SRNon_Burst, SRBurst, SRPipelineBurst, SRSynchronous, SRAsynchronous);
+  TCacheSRAMType = (SROther, SRUnknown, SRNon_Burst, SRBurst, SRPipelineBurst,
+    SRSynchronous, SRAsynchronous);
 
   TCacheSRAMTypes = set of TCacheSRAMType;
 
-  TErrorCorrectionType = (ECFiller, ECOther, ECUnknown, ECNone, ECParity, ECSingle_bitECC, ECMulti_bitECC);
+  TErrorCorrectionType = (ECFiller, ECOther, ECUnknown, ECNone, ECParity,
+    ECSingle_bitECC, ECMulti_bitECC);
 
 const
   ErrorCorrectionTypeStr: array [TErrorCorrectionType] of string =
@@ -1215,7 +1168,8 @@ const
 
 type
 
-  TSystemCacheType = (SCFiller, SCOther, SCUnknown, SCInstruction, SCData, SCUnified);
+  TSystemCacheType = (SCFiller, SCOther, SCUnknown, SCInstruction, SCData,
+    SCUnified);
 
 const
   SystemCacheTypeStr: array [TSystemCacheType] of string = ('Filler', 'Other', 'Unknown', 'Instruction', 'Data', 'Unified');
@@ -1524,7 +1478,8 @@ type
     /// 2.0+
     /// </remarks>
     { $ENDREGION }
-    ProcessorID: int64; // QWORD;
+    ProcessorID: int64;
+    // QWORD;
     { $REGION 'Documentation' }
     /// <summary>
     /// String number describing the Processor
@@ -2399,7 +2354,8 @@ type
     /// 2.7+
     /// </remarks>
     { $ENDREGION }
-    ExtendedMaximumCapacity: int64; // QWORD
+    ExtendedMaximumCapacity: int64;
+    // QWORD
   end;
 
   TPhysicalMemoryArrayInformation = class
@@ -3795,8 +3751,10 @@ type
   ArrPhysicalMemoryArrayInfo = array of TPhysicalMemoryArrayInformation;
   ArrMemoryDeviceInfo = array of TMemoryDeviceInformation;
   ArrBatteryInfo = array of TBatteryInformation;
-  ArrMemoryArrayMappedAddressInfo = array of TMemoryArrayMappedAddressInformation;
-  ArrMemoryDeviceMappedAddressInfo = array of TMemoryDeviceMappedAddressInformation;
+  ArrMemoryArrayMappedAddressInfo = array of
+    TMemoryArrayMappedAddressInformation;
+  ArrMemoryDeviceMappedAddressInfo = array of
+    TMemoryDeviceMappedAddressInformation;
   ArrBuiltInPointingDeviceInfo = array of TBuiltInPointingDeviceInformation;
   ArrVoltageProbeInfo = array of TVoltageProbeInformation;
   ArrCoolingDeviceInfo = array of TCoolingDeviceInformation;
@@ -3815,71 +3773,100 @@ type
     FBiosInfo: TBiosInformation;
     FSysInfo: TSystemInformation;
     FBaseBoardInfo: {$IFDEF NOGENERICS}ArrBaseBoardInfo;
-{$ELSE}TArray<TBaseBoardInformation>;{$ENDIF}
+{$ELSE}
+      TArray<TBaseBoardInformation>;{$ENDIF}
     FEnclosureInfo: {$IFDEF NOGENERICS}ArrEnclosureInfo;
-{$ELSE}TArray<TEnclosureInformation>;{$ENDIF}
+{$ELSE}
+      TArray<TEnclosureInformation>;{$ENDIF}
     FProcessorInfo: {$IFDEF NOGENERICS}ArrProcessorInfo;
-{$ELSE}TArray<TProcessorInformation>;{$ENDIF}
+{$ELSE}
+      TArray<TProcessorInformation>;{$ENDIF}
     FCacheInfo: {$IFDEF NOGENERICS}ArrCacheInfo;
-{$ELSE}TArray<TCacheInformation>;{$ENDIF}
+{$ELSE}
+      TArray<TCacheInformation>;{$ENDIF}
     FPortConnectorInfo: {$IFDEF NOGENERICS}ArrPortConnectorInfo;
-{$ELSE} TArray<TPortConnectorInformation>; {$ENDIF}
+{$ELSE}
+      TArray<TPortConnectorInformation>; {$ENDIF}
     FSystemSlotInfo: {$IFDEF NOGENERICS}ArrSystemSlotInfo;
-{$ELSE} TArray<TSystemSlotInformation>; {$ENDIF}
+{$ELSE}
+      TArray<TSystemSlotInformation>; {$ENDIF}
     FSMBiosTablesList: {$IFDEF NOGENERICS}ArrSMBiosTableEntry;
-{$ELSE} TArray<TSMBiosTableEntry>;{$ENDIF}
+{$ELSE}
+      TArray<TSMBiosTableEntry>;{$ENDIF}
     FOEMStringsInfo: {$IFDEF NOGENERICS}ArrOEMStringsInfo;
-{$ELSE}TArray<TOEMStringsInformation>;{$ENDIF}
+{$ELSE}
+      TArray<TOEMStringsInformation>;{$ENDIF}
     FBIOSLanguageInfo: {$IFDEF NOGENERICS}ArrBIOSLanguageInfo;
-{$ELSE}TArray<TBIOSLanguageInformation>;{$ENDIF}
+{$ELSE}
+      TArray<TBIOSLanguageInformation>;{$ENDIF}
     FSystemConfInfo: {$IFDEF NOGENERICS}ArrSystemConfInfo;
-{$ELSE}TArray<TSystemConfInformation>;{$ENDIF}
+{$ELSE}
+      TArray<TSystemConfInformation>;{$ENDIF}
     FPhysicalMemoryArrayInfo: {$IFDEF NOGENERICS}ArrPhysicalMemoryArrayInfo;
-{$ELSE}TArray<TPhysicalMemoryArrayInformation>;{$ENDIF}
+{$ELSE}
+      TArray<TPhysicalMemoryArrayInformation>;{$ENDIF}
     FMemoryDeviceInfo: {$IFDEF NOGENERICS}ArrMemoryDeviceInfo;
-{$ELSE}TArray<TMemoryDeviceInformation>;{$ENDIF}
+{$ELSE}
+      TArray<TMemoryDeviceInformation>;{$ENDIF}
     FBatteryInformation: {$IFDEF NOGENERICS}ArrBatteryInfo;
-{$ELSE}TArray<TBatteryInformation>;{$ENDIF}
-    FMemoryArrayMappedAddressInformation: {$IFDEF NOGENERICS}ArrMemoryArrayMappedAddressInfo;
-{$ELSE}TArray<TMemoryArrayMappedAddressInformation>;{$ENDIF}
-    FMemoryDeviceMappedAddressInformation: {$IFDEF NOGENERICS}ArrMemoryDeviceMappedAddressInfo;
-{$ELSE}TArray<TMemoryDeviceMappedAddressInformation>;{$ENDIF}
-    FBuiltInPointingDeviceInformation: {$IFDEF NOGENERICS}ArrBuiltInPointingDeviceInfo;
-{$ELSE}TArray<TBuiltInPointingDeviceInformation>;{$ENDIF}
+{$ELSE}
+      TArray<TBatteryInformation>;{$ENDIF}
+    FMemoryArrayMappedAddressInformation: {$IFDEF NOGENERICS}
+    ArrMemoryArrayMappedAddressInfo;
+{$ELSE}
+      TArray<TMemoryArrayMappedAddressInformation>;{$ENDIF}
+    FMemoryDeviceMappedAddressInformation: {$IFDEF NOGENERICS}
+    ArrMemoryDeviceMappedAddressInfo;
+{$ELSE}
+      TArray<TMemoryDeviceMappedAddressInformation>;{$ENDIF}
+    FBuiltInPointingDeviceInformation: {$IFDEF NOGENERICS}
+    ArrBuiltInPointingDeviceInfo;
+{$ELSE}
+      TArray<TBuiltInPointingDeviceInformation>;{$ENDIF}
     FVoltageProbeInformation: {$IFDEF NOGENERICS}ArrVoltageProbeInfo;
-{$ELSE}TArray<TVoltageProbeInformation>;{$ENDIF}
+{$ELSE}
+      TArray<TVoltageProbeInformation>;{$ENDIF}
     FCoolingDeviceInformation: {$IFDEF NOGENERICS}ArrCoolingDeviceInfo;
-{$ELSE}TArray<TCoolingDeviceInformation>;{$ENDIF}
+{$ELSE}
+      TArray<TCoolingDeviceInformation>;{$ENDIF}
     FTemperatureProbeInformation: {$IFDEF NOGENERICS}ArrTemperatureProbeInfo;
-{$ELSE}TArray<TTemperatureProbeInformation>;{$ENDIF}
-    FElectricalCurrentProbeInformation: {$IFDEF NOGENERICS}ArrElectricalCurrentProbeInfo;
-{$ELSE}TArray<TElectricalCurrentProbeInformation>;{$ENDIF}
+{$ELSE}
+      TArray<TTemperatureProbeInformation>;{$ENDIF}
+    FElectricalCurrentProbeInformation: {$IFDEF NOGENERICS}
+    ArrElectricalCurrentProbeInfo;
+{$ELSE}
+      TArray<TElectricalCurrentProbeInformation>;{$ENDIF}
     FOnBoardSystemInfo: {$IFDEF NOGENERICS}ArrOnBoardSystemInfo;
-{$ELSE} TArray<TOnBoardSystemInformation>; {$ENDIF}
+{$ELSE}
+      TArray<TOnBoardSystemInformation>; {$ENDIF}
     FMemoryControllerInfo: {$IFDEF NOGENERICS}ArrMemoryControllerInfo;
-{$ELSE} TArray<TMemoryControllerInformation>; {$ENDIF}
+{$ELSE}
+      TArray<TMemoryControllerInformation>; {$ENDIF}
     FMemoryModuleInfo: {$IFDEF NOGENERICS}ArrMemoryModuleInfo;
-{$ELSE} TArray<TMemoryModuleInformation>; {$ENDIF}
+{$ELSE}
+      TArray<TMemoryModuleInformation>; {$ENDIF}
     FGroupAssociationsInformation: {$IFDEF NOGENERICS}ArrGroupAssociationsInfo;
-{$ELSE} TArray<TGroupAssociationsInformation>; {$ENDIF}
+{$ELSE}
+      TArray<TGroupAssociationsInformation>; {$ENDIF}
 {$IFDEF MSWINDOWS}
 {$IFDEF USEWMI}
     procedure LoadSMBIOSWMI(const RemoteMachine, UserName, Password: string);
 {$ELSE}
-      procedure LoadSMBIOSWinAPI;
+      Procedure LoadSMBIOSWinAPI;
 {$ENDIF}
 {$ENDIF MSWINDOWS}
 {$IFDEF UNIX}
     procedure LoadSMBIOSLinux;
 {$ENDIF}
 {$IFDEF MACOS}
-      procedure LoadSMBIOS_OSX;
+      Procedure LoadSMBIOS_OSX;
 {$ENDIF MACOS}
     procedure ClearSMBiosTables;
     procedure ReadSMBiosTables;
     procedure Init;
     function GetSMBiosTablesList: {$IFDEF NOGENERICS}ArrSMBiosTableEntry;
-{$ELSE} TArray<TSMBiosTableEntry>;{$ENDIF}
+{$ELSE}
+      TArray<TSMBiosTableEntry>;{$ENDIF}
     function GetSMBiosTablesCount: integer;
     function GetHasBaseBoardInfo: boolean;
     function GetHasEnclosureInfo: boolean;
@@ -3913,14 +3900,16 @@ type
     /// current mode selected (WMI or WinApi)
     /// </summary>
     { $ENDREGION }
-    constructor Create(LoadBiosData: boolean = True); overload;
+    constructor Create(LoadBiosData: boolean = True);
+      overload;
     { $REGION 'Documentation' }
     /// <summary>
     /// Use this constructor to load the SMBIOS data from a previously saved
     /// file.
     /// </summary>
     { $ENDREGION }
-    constructor Create(const FileName: string); overload;
+    constructor Create(const FileName: string);
+      overload;
 {$IFDEF MSWINDOWS}
 {$IFDEF USEWMI}
     { $REGION 'Documentation' }
@@ -3928,10 +3917,12 @@ type
     /// Use this constructor to read the SMBIOS from a remote machine.
     /// </summary>
     { $ENDREGION }
-    constructor Create(const RemoteMachine, UserName, Password: string); overload;
+    constructor Create(const RemoteMachine, UserName, Password: string);
+      overload;
 {$ENDIF}
 {$ENDIF MSWINDOWS}
-    destructor Destroy; override;
+    destructor Destroy;
+      override;
     function SearchSMBiosTable(TableType: TSMBiosTablesTypes): integer;
     function GetSMBiosTableNextIndex(TableType: TSMBiosTablesTypes; Offset: integer = 0): integer;
     function GetSMBiosTableEntries(TableType: TSMBiosTablesTypes): integer;
@@ -3959,112 +3950,72 @@ type
     property RawSMBIOSData: TRawSMBIOSData read FRawSMBIOSData;
     property SmbiosVersion: string read GetSmbiosVersion;
     property SMBiosTablesList: {$IFDEF NOGENERICS}ArrSMBiosTableEntry {$ELSE}TArray<TSMBiosTableEntry> {$ENDIF} read FSMBiosTablesList;
-
     property BiosInfo: TBiosInformation read FBiosInfo;
     property SysInfo: TSystemInformation read FSysInfo;
-
     property BaseBoardInfo: {$IFDEF NOGENERICS}ArrBaseBoardInfo {$ELSE}TArray<TBaseBoardInformation> {$ENDIF} read FBaseBoardInfo;
     property HasBaseBoardInfo: boolean read GetHasBaseBoardInfo;
-
     property EnclosureInfo: {$IFDEF NOGENERICS}ArrEnclosureInfo {$ELSE}TArray<TEnclosureInformation> {$ENDIF} read FEnclosureInfo;
     property HasEnclosureInfo: boolean read GetHasEnclosureInfo;
-
     property CacheInfo: {$IFDEF NOGENERICS}ArrCacheInfo {$ELSE}TArray<TCacheInformation> {$ENDIF} read FCacheInfo;
     property HasCacheInfo: boolean read GetHasCacheInfo;
-
     property ProcessorInfo: {$IFDEF NOGENERICS}ArrProcessorInfo {$ELSE}TArray<TProcessorInformation> {$ENDIF} read FProcessorInfo;
     property HasProcessorInfo: boolean read GetHasProcessorInfo;
-
     property MemoryControllerInfo: {$IFDEF NOGENERICS}ArrMemoryControllerInfo
- {$ELSE} TArray<TMemoryControllerInformation>
-{$ENDIF} read FMemoryControllerInfo;
+ {$ELSE}TArray<TMemoryControllerInformation>{$ENDIF} read FMemoryControllerInfo;
     property HasMemoryControllerInfo: boolean read GetHasMemoryControllerInfo;
-
-    property PortConnectorInfo: {$IFDEF NOGENERICS}ArrPortConnectorInfo
- {$ELSE} TArray<TPortConnectorInformation> {$ENDIF} read FPortConnectorInfo;
+    property PortConnectorInfo: {$IFDEF NOGENERICS}ArrPortConnectorInfo{$ELSE}TArray<TPortConnectorInformation> {$ENDIF} read FPortConnectorInfo;
     property HasPortConnectorInfo: boolean read GetHasPortConnectorInfo;
-
-    property SystemSlotInfo: {$IFDEF NOGENERICS}ArrSystemSlotInfo {$ELSE} TArray<TSystemSlotInformation> {$ENDIF} read FSystemSlotInfo;
+    property SystemSlotInfo: {$IFDEF NOGENERICS}ArrSystemSlotInfo {$ELSE}TArray<TSystemSlotInformation> {$ENDIF} read FSystemSlotInfo;
     property HasSystemSlotInfo: boolean read GetHasSystemSlotInfo;
-
-    property OnBoardSystemInfo: {$IFDEF NOGENERICS}ArrOnBoardSystemInfo
- {$ELSE} TArray<TOnBoardSystemInformation> {$ENDIF} read FOnBoardSystemInfo;
+    property OnBoardSystemInfo: {$IFDEF NOGENERICS}ArrOnBoardSystemInfo{$ELSE}TArray<TOnBoardSystemInformation> {$ENDIF} read FOnBoardSystemInfo;
     property HasOnBoardSystemInfo: boolean read GetHasOnBoardSystemInfo;
-
-    property OEMStringsInfo: {$IFDEF NOGENERICS}ArrOEMStringsInfo {$ELSE} TArray<TOEMStringsInformation> {$ENDIF} read FOEMStringsInfo;
+    property OEMStringsInfo: {$IFDEF NOGENERICS}ArrOEMStringsInfo {$ELSE}TArray<TOEMStringsInformation> {$ENDIF} read FOEMStringsInfo;
     property HasOEMStringsInfo: boolean read GetHasOEMStringsInfo;
-
-    property BIOSLanguageInfo: {$IFDEF NOGENERICS}ArrBIOSLanguageInfo
- {$ELSE} TArray<TBIOSLanguageInformation> {$ENDIF} read FBIOSLanguageInfo;
+    property BIOSLanguageInfo: {$IFDEF NOGENERICS}ArrBIOSLanguageInfo{$ELSE}TArray<TBIOSLanguageInformation> {$ENDIF} read FBIOSLanguageInfo;
     property HasBIOSLanguageInfo: boolean read GetHasBIOSLanguageInfo;
-
-    property SystemConfInfo: {$IFDEF NOGENERICS}ArrSystemConfInfo {$ELSE} TArray<TSystemConfInformation> {$ENDIF} read FSystemConfInfo;
+    property SystemConfInfo: {$IFDEF NOGENERICS}ArrSystemConfInfo {$ELSE}TArray<TSystemConfInformation> {$ENDIF} read FSystemConfInfo;
     property HasSystemConfInfo: boolean read GetHasSystemConfInfo;
-
-    property PhysicalMemoryArrayInfo: {$IFDEF NOGENERICS} ArrPhysicalMemoryArrayInfo
- {$ELSE} TArray<TPhysicalMemoryArrayInformation>
-{$ENDIF} read FPhysicalMemoryArrayInfo;
+    property PhysicalMemoryArrayInfo: {$IFDEF NOGENERICS}  ArrPhysicalMemoryArrayInfo
+ {$ELSE}TArray<TPhysicalMemoryArrayInformation>{$ENDIF} read FPhysicalMemoryArrayInfo;
     property HasPhysicalMemoryArrayInfo: boolean read GetHasPhysicalMemoryArrayInfo;
-
     property MemoryDeviceInfo: {$IFDEF NOGENERICS} ArrMemoryDeviceInfo
- {$ELSE} TArray<TMemoryDeviceInformation> {$ENDIF} read FMemoryDeviceInfo;
+ {$ELSE}TArray<TMemoryDeviceInformation> {$ENDIF} read FMemoryDeviceInfo;
     property HasMemoryDeviceInfo: boolean read GetHasMemoryDeviceInfo;
-
     property MemoryModuleInfo: {$IFDEF NOGENERICS} ArrMemoryModuleInfo
- {$ELSE} TArray<TMemoryModuleInformation> {$ENDIF} read FMemoryModuleInfo;
+ {$ELSE}TArray<TMemoryModuleInformation> {$ENDIF} read FMemoryModuleInfo;
     property HasMemoryModuleInfo: boolean read GetHasMemoryModuleInfo;
-
-    property BatteryInformation: {$IFDEF NOGENERICS} ArrBatteryInfo
- {$ELSE} TArray<TBatteryInformation> {$ENDIF} read FBatteryInformation;
+    property BatteryInformation: {$IFDEF NOGENERICS} ArrBatteryInfo {$ELSE} TArray<TBatteryInformation> {$ENDIF} read FBatteryInformation;
     property HasBatteryInfo: boolean read GetHasBatteryInfo;
-
-    property MemoryArrayMappedAddressInformation: {$IFDEF NOGENERICS} ArrMemoryArrayMappedAddressInfo
- {$ELSE} TArray<TMemoryArrayMappedAddressInformation>
-{$ENDIF} read FMemoryArrayMappedAddressInformation;
+    property MemoryArrayMappedAddressInformation: {$IFDEF NOGENERICS}  ArrMemoryArrayMappedAddressInfo
+ {$ELSE}TArray<TMemoryArrayMappedAddressInformation> {$ENDIF} read FMemoryArrayMappedAddressInformation;
     property HasMemoryArrayMappedAddressInfo: boolean read GetHasMemoryArrayMappedAddressInfo;
-
-    property MemoryDeviceMappedAddressInformation: {$IFDEF NOGENERICS} ArrMemoryDeviceMappedAddressInfo
- {$ELSE} TArray<TMemoryDeviceMappedAddressInformation>
-{$ENDIF} read FMemoryDeviceMappedAddressInformation;
+    property MemoryDeviceMappedAddressInformation: {$IFDEF NOGENERICS}  ArrMemoryDeviceMappedAddressInfo
+ {$ELSE}TArray<TMemoryDeviceMappedAddressInformation> {$ENDIF} read FMemoryDeviceMappedAddressInformation;
     property HasMemoryDeviceMappedAddressInfo: boolean read GetHasMemoryDeviceMappedAddressInfo;
-
-    property BuiltInPointingDeviceInformation: {$IFDEF NOGENERICS} ArrBuiltInPointingDeviceInfo
- {$ELSE} TArray<TBuiltInPointingDeviceInformation>
-{$ENDIF} read FBuiltInPointingDeviceInformation;
+    property BuiltInPointingDeviceInformation: {$IFDEF NOGENERICS}  ArrBuiltInPointingDeviceInfo
+ {$ELSE} TArray<TBuiltInPointingDeviceInformation> {$ENDIF} read FBuiltInPointingDeviceInformation;
     property HasBuiltInPointingDeviceInfo: boolean read GetHasBuiltInPointingDeviceInfo;
-
     property VoltageProbeInformation: {$IFDEF NOGENERICS} ArrVoltageProbeInfo
- {$ELSE} TArray<TVoltageProbeInformation>
-{$ENDIF} read FVoltageProbeInformation;
+ {$ELSE} TArray<TVoltageProbeInformation> {$ENDIF} read FVoltageProbeInformation;
     property HasVoltageProbeInfo: boolean read GetHasVoltageProbeInfo;
-
-    property CoolingDeviceInformation: {$IFDEF NOGENERICS} ArrCoolingDeviceInfo
- {$ELSE} TArray<TCoolingDeviceInformation>
-{$ENDIF} read FCoolingDeviceInformation;
+    property CoolingDeviceInformation: {$IFDEF NOGENERICS}  ArrCoolingDeviceInfo
+ {$ELSE} TArray<TCoolingDeviceInformation> {$ENDIF} read FCoolingDeviceInformation;
     property HasCoolingDeviceInfo: boolean read GetHasCoolingDeviceInfo;
-
-    property TemperatureProbeInformation: {$IFDEF NOGENERICS} ArrTemperatureProbeInfo
- {$ELSE} TArray<TTemperatureProbeInformation>
-{$ENDIF} read FTemperatureProbeInformation;
+    property TemperatureProbeInformation: {$IFDEF NOGENERICS}  ArrTemperatureProbeInfo
+ {$ELSE} TArray<TTemperatureProbeInformation> {$ENDIF} read FTemperatureProbeInformation;
     property HasTemperatureProbeInfo: boolean read GetHasTemperatureProbeInfo;
-
-    property ElectricalCurrentProbeInformation: {$IFDEF NOGENERICS} ArrElectricalCurrentProbeInfo
- {$ELSE} TArray<TElectricalCurrentProbeInformation>
-{$ENDIF} read FElectricalCurrentProbeInformation;
+    property ElectricalCurrentProbeInformation: {$IFDEF NOGENERICS}  ArrElectricalCurrentProbeInfo
+ {$ELSE} TArray<TElectricalCurrentProbeInformation> {$ENDIF} read FElectricalCurrentProbeInformation;
     property HasElectricalCurrentProbeInfo: boolean read GetHasElectricalCurrentProbeInfo;
-
-    property GroupAssociationsInformation: {$IFDEF NOGENERICS} ArrGroupAssociationsInfo
- {$ELSE} TArray<TGroupAssociationsInformation>
-{$ENDIF} read FGroupAssociationsInformation;
+    property GroupAssociationsInformation: {$IFDEF NOGENERICS}  ArrGroupAssociationsInfo
+ {$ELSE} TArray<TGroupAssociationsInformation> {$ENDIF} read FGroupAssociationsInformation;
     property HasGroupAssociationsInfo: boolean read GetHasGroupAssociationsInfo;
-
   end;
 
 implementation
 
 {$IFDEF USEWMI}
 {$IFDEF MSWINDOWS}
-
 uses ComObj,
 {$IFNDEF VER130}
   Variants,
@@ -4076,7 +4027,8 @@ uses ComObj,
 
 type
   TSmBiosEntryPoint = packed record
-    AnchorString: array [0 .. 3] of byte; // AnsiChar
+    AnchorString: array [0 .. 3] of byte;
+    // AnsiChar
     EntryPointChecksum: byte;
     EntryPointLength: byte;
     SMBIOSMajorVersion: byte;
@@ -4084,7 +4036,8 @@ type
     MaximumStructureSize: word;
     EntryPointRevision: byte;
     FormattedArea: array [0 .. 4] of byte;
-    IntermediateAnchorString: array [0 .. 4] of byte; // AnsiChar
+    IntermediateAnchorString: array [0 .. 4] of byte;
+    // AnsiChar
     IntermediateChecksum: byte;
     StructureTableLength: word;
     StructureTableAddress: DWORD;
@@ -4146,7 +4099,8 @@ end;
 
 function WordToBinStr(AValue: word): string;
 const
-  Bits: array [1 .. 16] of word = (32768, 16384, 8192, 4096, 2048, 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1);
+  Bits: array [1 .. 16] of word = (32768, 16384, 8192, 4096, 2048, 1024, 512,
+    256, 128, 64, 32, 16, 8, 4, 2, 1);
 var
   i: integer;
 begin
@@ -4170,7 +4124,8 @@ var
   Found: boolean;
   LPatternAddr: pbyte;
   LStart: byte;
-  {$IFDEF CPUX64}i, j, MaxBuffer: NativeUInt; {$ENDIF}
+  {$IFDEF CPUX64}
+  i, j, MaxBuffer: NativeUInt; {$ENDIF}
 begin
   LMax := High(ABuffer) - High(APattern);
   if (Offset <= LMax) and (High(APattern) >= 0) and (Offset >= 0) then
@@ -4180,7 +4135,7 @@ begin
     i := nativeuint(@ABuffer[Offset]);
     //Allow to compile on old Delphi versions,  (avoid internal compiler error)
     MaxBuffer :=
-{$IFDEF CPUX64}NativeUInt(@ABuffer[LMax]) {$ELSE}
+{$IFDEF CPUX64}    NativeUInt(@ABuffer[LMax]) {$ELSE}
       integer(@ABuffer[LMax]);
 {$ENDIF}
     ;
@@ -4199,7 +4154,7 @@ begin
         if Found then
         begin
           Result := (i -
-{$IFDEF CPUX64}NativeUInt(@ABuffer[0]){$ELSE}
+{$IFDEF CPUX64}             NativeUInt(@ABuffer[0]){$ELSE}
             integer(@ABuffer[0])
 {$ENDIF}
             );
@@ -4217,7 +4172,6 @@ end;
 procedure TSMBios.Init;
 begin
   FRawSMBIOSData.SMBIOSTableData := nil;
-
   FSMBiosTablesList := nil;
   FBaseBoardInfo := nil;
   FEnclosureInfo := nil;
@@ -4372,6 +4326,7 @@ begin
 end;
 
 procedure TSMBios.FindAndLoadFromFile(const FileName: string);
+
 var
   FileStream: TFileStream;
   MagicNumber: DWORD;
@@ -4402,7 +4357,8 @@ begin
           if CheckSum <> 0 then
             Continue;
 
-          Offset := FileStream.Position; // SMBIOSEntryPoint.StructureTableAddress {- $000C0000};
+          Offset := FileStream.Position;
+          // SMBIOSEntryPoint.StructureTableAddress {- $000C0000};
           if (Offset >= 0) and (Offset < FileStream.Size) then
           begin
             FileStream.Position := Offset;
@@ -4413,9 +4369,12 @@ begin
             FRawSMBIOSData.Length := SMBIOSEntryPoint.StructureTableLength;
             GetMem(FRawSMBIOSData.SMBIOSTableData, FRawSMBIOSData.Length);
             FRawSMBIOSData.DmiRevision := SMBIOSEntryPoint.EntryPointRevision;
-            FRawSMBIOSData.SMBIOSMajorVersion := SMBIOSEntryPoint.SMBIOSMajorVersion;
-            FRawSMBIOSData.SMBIOSMinorVersion := SMBIOSEntryPoint.SMBIOSMinorVersion;
-            FileStream.Read(FRawSMBIOSData.SMBIOSTableData^, FRawSMBIOSData.Length);
+            FRawSMBIOSData.SMBIOSMajorVersion :=
+              SMBIOSEntryPoint.SMBIOSMajorVersion;
+            FRawSMBIOSData.SMBIOSMinorVersion :=
+              SMBIOSEntryPoint.SMBIOSMinorVersion;
+            FileStream.Read(FRawSMBIOSData.SMBIOSTableData^,
+              FRawSMBIOSData.Length);
             Break;
           end;
         end;
@@ -4573,7 +4532,8 @@ begin
     if Assigned(FRawSMBIOSData.SMBIOSTableData) then
       FreeMem(FRawSMBIOSData.SMBIOSTableData);
     GetMem(FRawSMBIOSData.SMBIOSTableData, FRawSMBIOSData.Length);
-    LStream.ReadBuffer(FRawSMBIOSData.SMBIOSTableData^[0], FRawSMBIOSData.Length);
+    LStream.ReadBuffer(FRawSMBIOSData.SMBIOSTableData^[0], FRawSMBIOSData.Length
+      );
 
     if LoadSMBIOSTables then
     begin
@@ -4626,31 +4586,31 @@ begin
 end;
 
 function GetSMBiosString(FBuffer: PByteArray; Entry, index: integer): ansistring;
- {$IFDEF LINUX}
- var
-   i: Integer;
-   p: PByte;
- begin
-   Result := '';
-   p := PByte(@FBuffer^[Entry]);
-   for i := 1 to Index do
-   begin
-      while p[0] <> 0 do
-      begin
-         Result := Result + Chr(p[0]);
-         inc(p);
-      end;
+{$IFDEF LINUX}
+Var 
+  i: Integer;
+  p: PByte;
+Begin
+  Result := '';
+  p := PByte(@FBuffer^[Entry]);
+  For i := 1 To Index Do
+    Begin
+      While p[0] <> 0 Do
+        Begin
+          Result := Result + Chr(p[0]);
+          inc(p);
+        End;
 
-     if i = Index then
-       Break
-     else
-     begin
-       Result := '';
-       inc(p);
-     end;
-   end;
- end;
- {$ELSE}
+      If i = Index Then
+        Break
+      Else
+        Begin
+          Result := '';
+          inc(p);
+        End;
+    End;
+End;
+{$ELSE}
 var
   i: integer;
   p: pansichar;
@@ -4688,7 +4648,6 @@ var
 {$ENDIF}
 begin
   Result := 0;
-
 {$IFDEF OLDDELPHI}
   for i := Low(FSMBiosTablesList) to High(FSMBiosTablesList) do
   begin
@@ -4697,8 +4656,9 @@ begin
       Result := Result + 1;
   end;
 {$ELSE}
-  for Entry in FSMBiosTablesList do
-    if (Entry.Header.TableType <> 127) and (Entry.Header.TableType = Byte(Ord(TableType))) then
+  For Entry In FSMBiosTablesList Do
+    If (Entry.Header.TableType <> 127) And (Entry.Header.TableType = Byte(Ord(
+       TableType))) Then
       Result := Result + 1;
 {$ENDIF}
 end;
@@ -4711,7 +4671,6 @@ var
 {$ENDIF}
 begin
   Result := -1;
-
 {$IFDEF OLDDELPHI}
   for i := Low(FSMBiosTablesList) to High(FSMBiosTablesList) do
   begin
@@ -4723,12 +4682,13 @@ begin
     end;
   end;
 {$ELSE}
-  for Entry in FSMBiosTablesList do
-    if (Entry.Header.TableType = Byte(Ord(TableType))) and (Entry.index > Offset) then
-    begin
-      Result := Entry.index;
-      Break;
-    end;
+  For Entry In FSMBiosTablesList Do
+    If (Entry.Header.TableType = Byte(Ord(TableType))) And (Entry.index > Offset
+       ) Then
+      Begin
+        Result := Entry.index;
+        Break;
+      End;
 {$ENDIF}
 end;
 
@@ -4748,7 +4708,8 @@ begin
     if Header.TableType = byte(Ord(EndofTable)) then
       Break;
 
-    Inc(Index, Header.Length); // + 1);
+    Inc(Index, Header.Length);
+    // + 1);
     if Index + 1 > FRawSMBIOSData.Length then
       Break;
 
@@ -4763,8 +4724,8 @@ begin
 end;
 
 function TSMBios.GetSMBiosTablesList: {$IFDEF NOGENERICS}ArrSMBiosTableEntry;
-{$ELSE} TArray<TSMBiosTableEntry>;{$ENDIF}
-
+{$ELSE}
+TArray<TSMBiosTableEntry>;{$ENDIF}
 var
   i, index: DWORD;
   Header: TSmBiosTableHeader;
@@ -4786,7 +4747,8 @@ begin
     if Header.TableType = byte(Ord(EndofTable)) then
       Break;
 
-    Inc(Index, Header.Length); // + 1);
+    Inc(Index, Header.Length);
+    // + 1);
     if Index + 1 > RawSMBIOSData.Length then
       Break;
 
@@ -4807,10 +4769,10 @@ end;
 
 {$IFDEF MACOS}
 
-procedure TSMBios.LoadSMBIOS_OSX;
-const
+Procedure TSMBios.LoadSMBIOS_OSX;
+Const
   sleepimage = '/private/var/vm/sleepimage';
-var
+Var
   FileStream: TFileStream;
   MagicNumber: DWORD;
   BytesRead: Integer;
@@ -4818,72 +4780,78 @@ var
   CheckSum: Byte;
   i: Integer;
   Offset: Integer;
-begin
-  if not FileExists(sleepimage) then
+Begin
+  If Not FileExists(sleepimage) Then
     raise Exception.Create(Format('The %s file  doesn''t  exist. run "sudo pmset hibernatemode 1" to enable', [sleepimage]));
-
   FileStream := TFileStream.Create(sleepimage, fmOpenRead);
-  try
+  Try
     FileStream.Position := 0;
     FillChar(SMBIOSEntryPoint, SizeOf(SMBIOSEntryPoint), #0);
-    repeat
+    Repeat
       BytesRead := FileStream.Read(MagicNumber, SizeOf(MagicNumber));
-      if (BytesRead > 0) and (MagicNumber = SMBIOS_ANCHOR_STRING_VALUE) then
-      begin
-        FileStream.Position := FileStream.Position - SizeOf(MagicNumber);
-        BytesRead := FileStream.Read(SMBIOSEntryPoint, SizeOf(SMBIOSEntryPoint));
-        if (BytesRead > 0) and (SMBIOSEntryPoint.IntermediateAnchorString = '_DMI_') then
-        begin
-          CheckSum := 0;
-          for i := 0 to SMBIOSEntryPoint.EntryPointLength - 1 do
-            CheckSum := CheckSum + PByteArray(@SMBIOSEntryPoint)^[i];
-          if CheckSum <> 0 then
-            Continue;
-          Offset := SMBIOSEntryPoint.StructureTableAddress - $000C0000;
-          if (Offset >= 0) and (Offset < FileStream.Size) then
-          begin
-            FileStream.Position := Offset;
-            FRawSMBIOSData.Length := SMBIOSEntryPoint.StructureTableLength;
+      If (BytesRead > 0) And (MagicNumber = SMBIOS_ANCHOR_STRING_VALUE) Then
+        Begin
+          FileStream.Position := FileStream.Position - SizeOf(MagicNumber);
+          BytesRead := FileStream.Read(SMBIOSEntryPoint, SizeOf(SMBIOSEntryPoint
+                       ));
+          If (BytesRead > 0) And (SMBIOSEntryPoint.IntermediateAnchorString =
+             '_DMI_') Then
+            Begin
+              CheckSum := 0;
+              For i := 0 To SMBIOSEntryPoint.EntryPointLength - 1 Do
+                CheckSum := CheckSum + PByteArray(@SMBIOSEntryPoint)^[i];
+              If CheckSum <> 0 Then
+                Continue;
+              Offset := SMBIOSEntryPoint.StructureTableAddress - $000C0000;
+              If (Offset >= 0) And (Offset < FileStream.Size) Then
+                Begin
+                  FileStream.Position := Offset;
+                  FRawSMBIOSData.Length := SMBIOSEntryPoint.StructureTableLength;
 
-            if Assigned(FRawSMBIOSData.SMBIOSTableData) then
-              FreeMem(FRawSMBIOSData.SMBIOSTableData);
+                  If Assigned(FRawSMBIOSData.SMBIOSTableData) Then
+                    FreeMem(FRawSMBIOSData.SMBIOSTableData);
 
-            GetMem(FRawSMBIOSData.SMBIOSTableData, FRawSMBIOSData.Length);
-            FRawSMBIOSData.DmiRevision := SMBIOSEntryPoint.EntryPointRevision;
-            FRawSMBIOSData.SMBIOSMajorVersion := SMBIOSEntryPoint.SMBIOSMajorVersion;
-            FRawSMBIOSData.SMBIOSMinorVersion := SMBIOSEntryPoint.SMBIOSMinorVersion;
-            FileStream.Read(FRawSMBIOSData.SMBIOSTableData^, FRawSMBIOSData.Length);
-            Exit;
-          end;
-        end;
+                  GetMem(FRawSMBIOSData.SMBIOSTableData, FRawSMBIOSData.Length);
+                  FRawSMBIOSData.DmiRevision := SMBIOSEntryPoint.
+                                                EntryPointRevision;
+                  FRawSMBIOSData.SMBIOSMajorVersion := SMBIOSEntryPoint.
+                                                       SMBIOSMajorVersion;
+                  FRawSMBIOSData.SMBIOSMinorVersion := SMBIOSEntryPoint.
+                                                       SMBIOSMinorVersion;
+                  FileStream.Read(FRawSMBIOSData.SMBIOSTableData^,
+                                  FRawSMBIOSData.Length);
+                  Exit;
+                End;
+            End;
+          FileStream.Position := FileStream.Position + 12;
+        End
+      Else
         FileStream.Position := FileStream.Position + 12;
-      end
-      else
-        FileStream.Position := FileStream.Position + 12;
-    until BytesRead = 0;
-  finally
+    Until BytesRead = 0;
+  Finally
     FileStream.Free;
-  end;
-end;
+End;
+End;
 
 {$ENDIF MACOS}
 {$IFDEF UNIX}
 const
   DumpSize = cardinal($000FFFFF - $000C0000 + 1);
-
 {$IFNDEF FPC}
 const
   {$IFDEF UNDERSCOREIMPORTNAME}
-    _PU = '_';
+  _PU = '_';
   {$ELSE}
   _PU = '';
   {$ENDIF}
   libc = 'libc.so';
 
 function mmap(Addr: Pointer; Len: nativeuint; Prot: integer; Flags: integer; FileDes: integer; Off: longint): Pointer;
-  cdecl; external libc Name _PU + 'mmap';
-function munmap(Addr: Pointer; Len: nativeuint): integer; cdecl; external libc Name _PU + 'munmap';
-
+  cdecl;
+  external libc Name _PU + 'mmap';
+function munmap(Addr: Pointer; Len: nativeuint): integer;
+  cdecl;
+  external libc Name _PU + 'munmap';
 
 function DoLoadSMBIOSData(AStream: TStream): boolean;
 const
@@ -4922,30 +4890,30 @@ begin
 end;
 
 {$ELSE}
-  function DoLoadSMBIOSData(AStream: TStream): Boolean;
-  var
-    Mem: THandle;
-    Map: Pointer;
-  begin
-    Result := false;
-    Mem := fpOpen('/dev/mem', O_RDONLY, 0);
-    if Mem <= 0 then
-      RaiseLastOsError
-    else if Mem > 0 then
-      try
-        Map := FpMmap(nil, DumpSize, PROT_READ, MAP_SHARED, Mem, $000C0000);
-        if Map <> MAP_FAILED then
-          try
-            AStream.Write(Map^, DumpSize);
-            AStream.Position := 0;
-            Result := true;
-          finally
-            Fpmunmap(Map, DumpSize);
-          end;
-      finally
-        fpClose(Mem);
-      end;
-  end;
+Function DoLoadSMBIOSData(AStream: TStream): Boolean;
+Var 
+  Mem: THandle;
+  Map: Pointer;
+Begin
+  Result := false;
+  Mem := fpOpen('/dev/mem', O_RDONLY, 0);
+  If Mem <= 0 Then
+    RaiseLastOsError
+  Else If Mem > 0 Then
+         Try
+           Map := FpMmap(Nil, DumpSize, PROT_READ, MAP_SHARED, Mem, $000C0000);
+           If Map <> MAP_FAILED Then
+             Try
+               AStream.Write(Map^, DumpSize);
+               AStream.Position := 0;
+               Result := true;
+             Finally
+               Fpmunmap(Map, DumpSize);
+End;
+Finally
+  fpClose(Mem);
+End;
+End;
 {$ENDIF}
 
 procedure TSMBios.LoadSMBIOSLinux;
@@ -4984,8 +4952,10 @@ begin
               FreeMem(FRawSMBIOSData.SMBIOSTableData);
             GetMem(FRawSMBIOSData.SMBIOSTableData, FRawSMBIOSData.Length);
             FRawSMBIOSData.DmiRevision := SMBIOSEntryPoint.EntryPointRevision;
-            FRawSMBIOSData.SMBIOSMajorVersion := SMBIOSEntryPoint.SMBIOSMajorVersion;
-            FRawSMBIOSData.SMBIOSMinorVersion := SMBIOSEntryPoint.SMBIOSMinorVersion;
+            FRawSMBIOSData.SMBIOSMajorVersion :=
+              SMBIOSEntryPoint.SMBIOSMajorVersion;
+            FRawSMBIOSData.SMBIOSMinorVersion :=
+              SMBIOSEntryPoint.SMBIOSMinorVersion;
             MStream.Read(FRawSMBIOSData.SMBIOSTableData^, FRawSMBIOSData.Length);
             Exit;
           end;
@@ -5000,28 +4970,29 @@ begin
   end;
 end;
 
-{$ENDIF}//UNIX
-
-
+{$ENDIF}
+//UNIX
 {$IFDEF MSWINDOWS}
 {$IFNDEF USEWMI}
 
-procedure TSMBios.LoadSMBIOSWinAPI;
-type
-  // http://msdn.microsoft.com/en-us/library/MSWINDOWS/desktop/ms724379%28v=vs.85%29.aspx
-  TFNGetSystemFirmwareTable = function(
-    FirmwareTableProviderSignature: DWORD;
-    FirmwareTableID              : DWORD;
-    out pFirmwareTableBuffer;
-    BufferSize: DWORD): UINT;stdcall;
-const
-  FirmwareTableProviderSignature = $52534D42; // 'RSMB'
-var
+Procedure TSMBios.LoadSMBIOSWinAPI;
+Type
+// http://msdn.microsoft.com/en-us/library/MSWINDOWS/desktop/ms724379%28v=vs.85%29.aspx
+  TFNGetSystemFirmwareTable = Function (
+                                        FirmwareTableProviderSignature: DWORD;
+                                        FirmwareTableID              : DWORD;
+                                        out pFirmwareTableBuffer;
+                                        BufferSize: DWORD): UINT;
+  stdcall;
+Const 
+  FirmwareTableProviderSignature = $52534D42;
+  // 'RSMB'
+Var 
   GetSystemFirmwareTable: TFNGetSystemFirmwareTable;
   hModule: Windows.hModule;
   BufferSize: UINT;
   Buffer: PByteArray;
-begin
+Begin
   ZeroMemory(@FRawSMBIOSData, SizeOf(FRawSMBIOSData));
   hModule := GetModuleHandle(kernel32);
 {$IFDEF FPC}
@@ -5029,30 +5000,34 @@ begin
 {$ELSE}
   GetSystemFirmwareTable := GetProcAddress(hModule, 'GetSystemFirmwareTable');
 {$ENDIF}
-  if Assigned(GetSystemFirmwareTable) then
-  begin
-    BufferSize := GetSystemFirmwareTable(FirmwareTableProviderSignature, 0, nil^, BufferSize);
-    if BufferSize > 0 then
-    begin
-      if Assigned(FRawSMBIOSData.SMBIOSTableData) then
-        FreeMem(FRawSMBIOSData.SMBIOSTableData);
+  If Assigned(GetSystemFirmwareTable) Then
+    Begin
+      BufferSize := GetSystemFirmwareTable(FirmwareTableProviderSignature, 0,
+                    Nil^, BufferSize);
+      If BufferSize > 0 Then
+        Begin
+          If Assigned(FRawSMBIOSData.SMBIOSTableData) Then
+            FreeMem(FRawSMBIOSData.SMBIOSTableData);
 
-      GetMem(FRawSMBIOSData.SMBIOSTableData, BufferSize - 8);
-      GetMem(Buffer, BufferSize);
-      try
-        GetSystemFirmwareTable(FirmwareTableProviderSignature, 0, Buffer^, BufferSize);
-        Move(Buffer^[0], FRawSMBIOSData, 8);
-        Move(Buffer^[8], FRawSMBIOSData.SMBIOSTableData^[0], FRawSMBIOSData.Length);
-      finally
-        FreeMem(Buffer);
-      end;
-    end
-    else
-{$IFDEF VER130} RaiseLastWin32Error; {$ELSE} RaiseLastOsError; {$ENDIF}
-  end
-  else
-    Raise Exception.Create('GetSystemFirmwareTable function not found, try switching to WMI Mode');
-end;
+          GetMem(FRawSMBIOSData.SMBIOSTableData, BufferSize - 8);
+          GetMem(Buffer, BufferSize);
+          Try
+            GetSystemFirmwareTable(FirmwareTableProviderSignature, 0, Buffer^,
+                                   BufferSize);
+            Move(Buffer^[0], FRawSMBIOSData, 8);
+            Move(Buffer^[8], FRawSMBIOSData.SMBIOSTableData^[0], FRawSMBIOSData.
+                 Length);
+          Finally
+            FreeMem(Buffer);
+        End;
+    End
+  Else
+{$IFDEF VER130} RaiseLastWin32Error; {$ELSE}
+  RaiseLastOsError; {$ENDIF}
+End
+Else
+  Raise Exception.Create('GetSystemFirmwareTable function not found, try switching to WMI Mode');
+End;
 {$ENDIF}
 {$IFDEF USEWMI}
 
@@ -5074,7 +5049,6 @@ var
   Value: integer;
   i: integer;
 begin
-  ;
   ZeroMemory(@FRawSMBIOSData, SizeOf(FRawSMBIOSData));
   FSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
   if (RemoteMachine = '') then
@@ -5099,10 +5073,11 @@ begin
     FRawSMBIOSData.DmiRevision := FWbemObject.DmiRevision;
     FRawSMBIOSData.SMBIOSMajorVersion := FWbemObject.SMBIOSMajorVersion;
     FRawSMBIOSData.SMBIOSMinorVersion := FWbemObject.SMBIOSMinorVersion;
-
     vArray := FWbemObject.SMBiosData;
 
-{$IFDEF FPC} if VarIsArray(vArray) then {$ENDIF}// if (VarType(vArray) and VarArray) <> 0 then
+{$IFDEF FPC}
+      If VarIsArray(vArray) Then {$ENDIF}
+    // if (VarType(vArray) and VarArray) <> 0 then
     for i := VarArrayLowBound(vArray, 1) to VarArrayHighBound(vArray, 1) do
     begin
       Value := vArray[i];
@@ -5126,15 +5101,15 @@ var
   LArrMemory: TPhysicalMemoryArrayInformation;
 begin
   ClearSMBiosTables;
-
   FBiosInfo := TBiosInformation.Create;
   FSysInfo := TSystemInformation.Create;
-
   LIndex := GetSMBiosTableNextIndex(BIOSInformation, -1);
+
   if LIndex >= 0 then
     FBiosInfo.RAWBiosInformation := @RawSMBIOSData.SMBIOSTableData^[LIndex];
 
   LIndex := GetSMBiosTableNextIndex(SystemInformation, -1);
+
   if LIndex >= 0 then
     FSysInfo.RAWSystemInformation := @RawSMBIOSData.SMBIOSTableData^[LIndex];
 
@@ -5147,7 +5122,7 @@ begin
       if LIndex >= 0 then
       begin
         FOEMStringsInfo[i] := TOEMStringsInformation.Create;
-        FOEMStringsInfo[i].RAWOEMStringsInformation := @RawSMBIOSData.SMBIOSTableData^[LIndex];
+        FOEMStringsInfo[i].RAWOEMStringsInformation := @RawSMBIOSData.SMBIOSTableData^  [LIndex];
         Inc(i);
       end;
     until (LIndex = -1);
@@ -5265,7 +5240,7 @@ begin
       if LIndex >= 0 then
       begin
         FSystemSlotInfo[i] := TSystemSlotInformation.Create;
-        FSystemSlotInfo[i].RAWSystemSlotInformation := @RawSMBIOSData.SMBIOSTableData^[LIndex];
+        FSystemSlotInfo[i].RAWSystemSlotInformation := @RawSMBIOSData.SMBIOSTableData^  [LIndex];
         Inc(i);
       end;
     until (LIndex = -1);
@@ -5293,12 +5268,13 @@ begin
       if LIndex >= 0 then
       begin
         FSystemConfInfo[i] := TSystemConfInformation.Create;
-        FSystemConfInfo[i].RAWSystemConfInformation := @RawSMBIOSData.SMBIOSTableData^[LIndex];
+        FSystemConfInfo[i].RAWSystemConfInformation := @RawSMBIOSData.SMBIOSTableData^  [LIndex];
         Inc(i);
       end;
     until (LIndex = -1);
 
-  SetLength(FPhysicalMemoryArrayInfo, GetSMBiosTableEntries(PhysicalMemoryArray));
+  SetLength(FPhysicalMemoryArrayInfo, GetSMBiosTableEntries(PhysicalMemoryArray)
+    );
   i := 0;
   LIndex := -1;
   if Length(FPhysicalMemoryArrayInfo) > 0 then
@@ -5418,7 +5394,7 @@ begin
       if LIndex >= 0 then
       begin
         FBuiltInPointingDeviceInformation[i] := TBuiltInPointingDeviceInformation.Create;
-        FBuiltInPointingDeviceInformation[i].RAWBuiltInPointingDeviceInfo := @RawSMBIOSData.SMBIOSTableData^[LIndex];
+        FBuiltInPointingDeviceInformation[i].RAWBuiltInPointingDeviceInfo := @RawSMBIOSData.SMBIOSTableData^  [LIndex];
         Inc(i);
       end;
     until (LIndex = -1);
@@ -5474,12 +5450,13 @@ begin
       if LIndex >= 0 then
       begin
         FElectricalCurrentProbeInformation[i] := TElectricalCurrentProbeInformation.Create;
-        FElectricalCurrentProbeInformation[i].RAWElectricalCurrentProbeInfo := @RawSMBIOSData.SMBIOSTableData^[LIndex];
+        FElectricalCurrentProbeInformation[i].RAWElectricalCurrentProbeInfo := @RawSMBIOSData.SMBIOSTableData^  [LIndex];
         Inc(i);
       end;
     until (LIndex = -1);
 
-  SetLength(FOnBoardSystemInfo, GetSMBiosTableEntries(OnBoardDevicesInformation));
+  SetLength(FOnBoardSystemInfo, GetSMBiosTableEntries(OnBoardDevicesInformation)
+    );
   i := 0;
   LIndex := -1;
   if Length(FOnBoardSystemInfo) > 0 then
@@ -5566,6 +5543,7 @@ begin
 end;
 
 function TEnclosureInformation.TypeStr: ansistring;
+
 var
   _Type: byte;
 begin
@@ -5650,6 +5628,7 @@ begin
 end;
 
 function TProcessorInformation.GetProcessorVoltaje: double;
+
 var
   _Voltaje: byte;
 begin
@@ -6092,7 +6071,8 @@ begin
         Result := 'ARMv9';
       259:
         Result := 'Reserved for future use by ARM';
-      262 .. 279, 282 .. 299, 303 .. 319, 321 .. 349, 351 .. 499, 501 .. 511, 515 .. 599, 611 .. 619:
+      262 .. 279, 282 .. 299, 303 .. 319, 321 .. 349, 351 .. 499, 501 .. 511,
+      515 .. 599, 611 .. 619:
         Result := 'These values are available for assignment';
       260:
         Result := 'SH-3';
@@ -6336,7 +6316,6 @@ begin
       Result := 'Socket LGA5773';
     $48:
       Result := 'Socket BGA5773';
-
     else
       Result := 'Unknown';
   end;
@@ -6344,7 +6323,8 @@ end;
 
 function TProcessorInformation.ProcessorVersionStr: ansistring;
 begin
-  Result := GetSMBiosString(@RAWProcessorInformation^, RAWProcessorInformation^.Header.Length, RAWProcessorInformation^.ProcessorVersion);
+  Result := GetSMBiosString(@RAWProcessorInformation^, RAWProcessorInformation^.Header.Length,
+    RAWProcessorInformation^.ProcessorVersion);
 end;
 
 function TProcessorInformation.SerialNumberStr: ansistring;
@@ -6354,7 +6334,8 @@ end;
 
 function TProcessorInformation.SocketDesignationStr: ansistring;
 begin
-  Result := GetSMBiosString(@RAWProcessorInformation^, RAWProcessorInformation^.Header.Length, RAWProcessorInformation^.SocketDesignation);
+  Result := GetSMBiosString(@RAWProcessorInformation^, RAWProcessorInformation^.Header.Length,
+    RAWProcessorInformation^.SocketDesignation);
 end;
 
 { TCacheInformation }
@@ -6788,15 +6769,17 @@ begin
     $20:
       Result := 'PCI Express Gen 3 SFF-8639 (U.2)';
     $21:
-      Result := 'PCI Express Mini 52-pin (CEM spec. 2.0) with bottom-side keep-outs. Use Slot Length field value 03h (short length) for "half-Mini card"-only support, 04h (long length) for "full-Mini card" or dual support.';
+      Result :=
+        'PCI Express Mini 52-pin (CEM spec. 2.0) with bottom-side keep-outs. Use Slot Length field value 03h (short length) for "half-Mini card"-only support, 04h (long length) for "full-Mini card" or dual support.';
     $22:
-      Result := 'PCI Express Mini 52-pin (CEM spec. 2.0) without bottom-side keep-outs. Use Slot Length field value 03h (short length) for "half-Mini card"-only support, 04h (long length) for "full-Mini card" or dual support.';
+      Result :=
+        'PCI Express Mini 52-pin (CEM spec. 2.0) without bottom-side keep-outs. Use Slot Length field value 03h (short length) for "half-Mini card"-only support, 04h (long length) for "full-Mini card" or dual support.';
     $23:
       Result := 'PCI Express Mini 76-pin (CEM spec. 2.0) Corresponds to Display-Mini card.';
     $24:
       Result := 'PCI Express Gen 4 SFF-8639 (U.2)';
     $25:
-      Result :=  'PCI Express Gen 5 SFF-8639 (U.2)';
+      Result := 'PCI Express Gen 5 SFF-8639 (U.2)';
     $26:
       Result := 'OCP NIC 3.0 Small Form Factor (SFF)';
     $27:
@@ -6858,7 +6841,7 @@ begin
     $BA:
       Result := 'PCI Express Gen 4 x2';
     $BB:
-      Result  := 'PCI Express Gen 4 x4';
+      Result := 'PCI Express Gen 4 x4';
     $BC:
       Result := 'PCI Express Gen 4 x8';
     $BD:
@@ -6872,7 +6855,7 @@ begin
     $C1:
       Result := 'PCI Express Gen 5 x4';
     $C2:
-      Result  := 'PCI Express Gen 5 x8';
+      Result := 'PCI Express Gen 5 x8';
     $C3:
       Result := 'PCI Express Gen 5 x16';
     $C4:
@@ -6881,9 +6864,6 @@ begin
       Result := 'Enterprise and Datacenter 1U E1 Form Factor Slot';
     $C6:
       Result := 'Enterprise and Datacenter 3" E3 Form Factor Slot';
-
-    
-
     else
       Result := 'Unknown';
   end;
@@ -7007,7 +6987,8 @@ end;
 
 function TBaseBoardInformation.LocationinChassisStr: ansistring;
 begin
-  Result := GetSMBiosString(@RAWBaseBoardInformation^, RAWBaseBoardInformation^.Header.Length, RAWBaseBoardInformation^.LocationinChassis);
+  Result := GetSMBiosString(@RAWBaseBoardInformation^, RAWBaseBoardInformation^.Header.Length,
+    RAWBaseBoardInformation^.LocationinChassis);
 end;
 
 function TBaseBoardInformation.ManufacturerStr: ansistring;
@@ -7031,14 +7012,12 @@ begin
 end;
 
 { TSystemConfInformation }
-
 function TSystemConfInformation.GetConfString(index: integer): ansistring;
 begin
   Result := GetSMBiosString(@RAWSystemConfInformation^, RAWSystemConfInformation^.Header.Length, index);
 end;
 
 { TPhysicalMemoryArrayInformation }
-
 function TPhysicalMemoryArrayInformation.GetErrorCorrectionStr: ansistring;
 begin
   case RAWPhysicalMemoryArrayInformation^.MemoryErrorCorrection of
@@ -7073,7 +7052,7 @@ begin
     $04:
       Result := 'ISA add-on card';
     $05:
-      Result := 'EISA add-on card'
+      Result := 'EISA add-on card';
     $06:
       Result := 'PCI add-on card';
     $07:
@@ -7083,7 +7062,7 @@ begin
     $09:
       Result := 'Proprietary add-on card';
     $0A:
-      Result := 'NuBus'
+      Result := 'NuBus';
     $A0:
       Result := 'PC-98/C20 add-on card';
     $A1:
@@ -7122,7 +7101,6 @@ begin
 end;
 
 { TMemoryDeviceInformation }
-
 function TMemoryDeviceInformation.AssetTagStr: ansistring;
 begin
   Result := GetSMBiosString(@RAWMemoryDeviceInfo^, RAWMemoryDeviceInfo^.Header.Length, RAWMemoryDeviceInfo^.AssetTag);
@@ -7285,7 +7263,6 @@ begin
 end;
 
 { TBatteryInformation }
-
 function TBatteryInformation.GetDeviceChemistry: ansistring;
 begin
   case RAWBatteryInfo^.DeviceChemistry of
@@ -7357,7 +7334,6 @@ begin
 end;
 
 { TBuiltInPointingDeviceInformation }
-
 function TBuiltInPointingDeviceInformation.GetInterface: string;
 begin
   case RAWBuiltInPointingDeviceInfo^._Interface of
@@ -7382,12 +7358,11 @@ begin
     $A1:
       Result := 'Bus mouse micro-DIN';
     $A2:
-      Result := 'USB'
+      Result := 'USB';
     $A3:
       Result := 'I2C';
     $A4:
       Result := 'SPI';
-
     else
       Result := 'Unknown';
   end;
@@ -7577,7 +7552,7 @@ begin
   else if BitStr = '01101' then
     Result := 'Back Panel Board'
   else if BitStr = '01110' then
-    Result := 'Power System Board'  
+    Result := 'Power System Board'
   else if BitStr = '01111' then
     Result := 'Drive Back Plane';
 end;
@@ -7707,7 +7682,6 @@ begin
 end;
 
 { TMemoryControllerInformation }
-
 function TMemoryControllerInformation.GetCurrentInterleaveDescr: string;
 begin
   case RAWMemoryControllerInformation^.CurrentInterleave of
